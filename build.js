@@ -107,6 +107,7 @@ function loadPosts() {
       image: meta.image === 'none' ? null : (meta.image || site.postImage.src),
       imageAlt: meta.image_alt || (meta.image ? meta.title : site.postImage.alt),
       imageCredit: meta.image_credit || (meta.image ? '' : heroCreditInline()),
+      ogImage: meta.og_image || null, // 分享縮圖；沒填就用文章主圖
       published,
       updated,
       html,
@@ -244,7 +245,7 @@ ${p.html}
     '@type': 'BlogPosting',
     headline: p.title,
     description: p.summary,
-    image: p.image ? [site.url + p.image] : undefined,
+    image: (p.ogImage || p.image) ? [site.url + (p.ogImage || p.image)] : undefined,
     datePublished: p.published.toISOString(),
     dateModified: p.updated.toISOString(),
     author: { '@type': 'Person', name: p.author },
@@ -263,7 +264,7 @@ ${p.html}
     canonical: p.url,
     body,
     bodyAttrs: ` data-post="${esc(p.slug)}"`,
-    ogImage: p.image,
+    ogImage: p.ogImage || p.image,
     ogType: 'article',
     head,
   });

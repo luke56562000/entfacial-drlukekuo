@@ -141,3 +141,7 @@ main { padding: 28px 20px 48px; }
 /* 頁尾 */
 .footer { border-top: 1px solid var(--line); background: var(--surface); color: var(--muted); font-size: .85rem; padding: 24px 0 36px; }
 .footer p { margin: 0 0 8px; }
+
+/* 影片嵌入（YouTube）：16:9 隨寬度縮放 */
+.video { position: relative; aspect-ratio: 16 / 9; margin: 0 0 1.4em; border-radius: 10px; overflow: hidden; background: #000; box-shadow: var(--shadow); }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
