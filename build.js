@@ -99,8 +99,8 @@ function loadPosts() {
       title: meta.title || slug,
       author: meta.author || site.author,
       summary,
-      image: meta.image === 'none' ? null : (meta.image || site.hero.src),
-      imageAlt: meta.image_alt || (meta.image ? meta.title : site.hero.alt),
+      image: meta.image === 'none' ? null : (meta.image || site.postImage.src),
+      imageAlt: meta.image_alt || (meta.image ? meta.title : site.postImage.alt),
       imageCredit: meta.image_credit || (meta.image ? '' : heroCreditInline()),
       published,
       updated,
@@ -115,7 +115,7 @@ function loadPosts() {
 
 // ---------- 版型 ----------
 function heroCreditInline() {
-  const h = site.hero;
+  const h = site.postImage;
   return `照片：<a href="${esc(h.sourceUrl)}" rel="noopener">${esc(h.title)}</a> — `
     + `<a href="${esc(h.authorUrl)}" rel="noopener">${esc(h.author)}</a>，`
     + `<a href="${esc(h.licenseUrl)}" rel="noopener">${esc(h.license)}</a>，via Wikimedia Commons（${esc(h.note)}）`;
@@ -145,7 +145,7 @@ function layout({ title, description, canonical, body, bodyAttrs = '', ogImage, 
 <meta property="og:title" content="${esc(fullTitle)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(canonical)}">
-<meta property="og:image" content="${esc(site.url + (ogImage || site.hero.src))}">
+<meta property="og:image" content="${esc(site.url + (ogImage || site.ogImage))}">
 <meta property="og:site_name" content="${esc(site.title + ' ' + site.subtitle)}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="${esc(site.title)}" href="/feed.xml">
@@ -163,7 +163,7 @@ ${body}
 <footer class="footer">
   <div class="wrap">
     <p>© ${new Date().getFullYear()} ${esc(site.title)}｜${esc(site.subtitle)}。文章內容為一般衛教資訊，不能取代醫師當面診察；有任何症狀請就醫。</p>
-    <p class="credit">首頁與文章主視覺${heroCreditInline()}</p>
+    <p class="credit">文章預設主視覺${heroCreditInline()}</p>
   </div>
 </footer>
 <script src="/views.js" defer></script>
@@ -185,12 +185,13 @@ function renderIndex(posts) {
 
   const body = `
 <section class="hero">
-  <img class="hero-img" src="${esc(site.hero.src)}" alt="${esc(site.hero.alt)}" width="2000" height="1329" fetchpriority="high">
-  <div class="hero-overlay"></div>
-  <div class="hero-text wrap">
-    <h1>${esc(site.title)}</h1>
-    <p class="hero-sub">${esc(site.subtitle)}</p>
-    <p class="hero-tagline">${esc(site.tagline)}</p>
+  <div class="hero-inner wrap">
+    <div class="hero-text">
+      <h1>${esc(site.title)}</h1>
+      <p class="hero-sub">${esc(site.subtitle)}</p>
+      <p class="hero-tagline">${esc(site.tagline)}</p>
+    </div>
+    <img class="hero-img" src="${esc(site.portrait.src)}" alt="${esc(site.portrait.alt)}" width="${site.portrait.width}" height="${site.portrait.height}" fetchpriority="high">
   </div>
 </section>
 <main id="main" class="wrap">

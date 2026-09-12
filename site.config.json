@@ -5,8 +5,15 @@
   "url": "https://entfacial.drlukekuo.com",
   "author": "郭哲宏 醫師",
   "lang": "zh-Hant-TW",
-  "hero": {
-    "src": "/hero.jpg",
+  "portrait": {
+    "src": "/portrait.jpg",
+    "alt": "郭哲宏 醫師 形象照",
+    "width": 460,
+    "height": 628
+  },
+  "ogImage": "/og-image.jpg",
+  "postImage": {
+    "src": "/post-default.jpg",
     "alt": "醫師以壓舌板為孩童檢查喉嚨",
     "title": "Child receiving a throat examination at a medical clinic during a routine check-up",
     "author": "Shixart1985",

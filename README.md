@@ -18,7 +18,7 @@ Dr. Luke Kuo — ENT & Facial Plastic Surgery blog
    date: 2026-09-12
    author: 郭哲宏 醫師
    summary: 一到兩句摘要（顯示在首頁卡片）
-   image: /assets/my-photo.jpg      # 可省略；省略＝用網站主視覺；填 none＝不放圖
+   image: /assets/my-photo.jpg      # 可省略；省略＝用網站預設文章圖（CC BY 喉嚨檢查照）；填 none＝不放圖
    image_alt: 圖片說明
    image_credit: 圖片出處（可含 HTML 連結）
    ---

@@ -1,7 +1,9 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-/hero.jpg
+/portrait.jpg
+  Cache-Control: public, max-age=604800
+/post-default.jpg
   Cache-Control: public, max-age=604800
 /api/*
   Cache-Control: no-store
