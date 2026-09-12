@@ -2,7 +2,7 @@
 
 Dr. Luke Kuo — ENT & Facial Plastic Surgery blog
 
-- 網站：https://entfacial.drlukekuo.com
+- 網站：https://entfacial.drlukekuo.com（Pages 預設網址：https://entfacial-drlukekuo.pages.dev）
 - 主機：Cloudflare Pages（與此 GitHub repo 連動，push 到 `main` 就自動部署）
 - 瀏覽計數：Cloudflare Pages Functions + KV（`functions/api/views*`）
 
