@@ -8,12 +8,17 @@ import {
 } from 'node:fs';
 import { join, basename } from 'node:path';
 import { execSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { marked } from 'marked';
 
 const ROOT = new URL('.', import.meta.url).pathname;
 const OUT = join(ROOT, 'dist');
 const POSTS_DIR = join(ROOT, 'posts');
 const site = JSON.parse(readFileSync(join(ROOT, 'site.config.json'), 'utf8'));
+
+// 靜態檔加上內容雜湊當版本號，改了樣式就換網址，瀏覽器不會吃到舊快取
+const ver = (file) => createHash('md5').update(readFileSync(join(ROOT, 'static', file))).digest('hex').slice(0, 8);
+const ASSET = { css: `/style.css?v=${ver('style.css')}`, js: `/views.js?v=${ver('views.js')}`, icon: `/favicon.svg?v=${ver('favicon.svg')}` };
 
 // ---------- git 工具 ----------
 function git(args) {
@@ -149,8 +154,8 @@ function layout({ title, description, canonical, body, bodyAttrs = '', ogImage, 
 <meta property="og:site_name" content="${esc(site.title + ' ' + site.subtitle)}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="${esc(site.title)}" href="/feed.xml">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="${ASSET.icon}" type="image/svg+xml">
+<link rel="stylesheet" href="${ASSET.css}">
 </head>
 <body${bodyAttrs}>
 <a class="skip" href="#main">跳到主要內容</a>
@@ -166,7 +171,7 @@ ${body}
     <p class="credit">文章預設主視覺${heroCreditInline()}</p>
   </div>
 </footer>
-<script src="/views.js" defer></script>
+<script src="${ASSET.js}" defer></script>
 </body>
 </html>
 `;
