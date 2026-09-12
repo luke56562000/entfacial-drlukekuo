@@ -1,0 +1,119 @@
+/* 路克醫師 郭哲宏｜耳鼻喉顏面外科 —— 手機優先、不破框 */
+:root {
+  --bg: #f7f9fb;
+  --surface: #ffffff;
+  --text: #1c2733;
+  --muted: #5b6b7a;
+  --line: #e1e7ec;
+  --brand: #0f6e8c;
+  --brand-dark: #0b4f66;
+  --brand-soft: #e3f1f5;
+  --shadow: 0 1px 2px rgba(16, 32, 48, .06), 0 8px 24px rgba(16, 32, 48, .06);
+  --radius: 14px;
+  --content: 44rem;
+  --wrap: 68rem;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f151b;
+    --surface: #182129;
+    --text: #e6edf3;
+    --muted: #9fb0bf;
+    --line: #26323d;
+    --brand: #5fc0dc;
+    --brand-dark: #8ad3e8;
+    --brand-soft: #14313c;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+img, video, svg { max-width: 100%; height: auto; display: block; }
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3, h4 { line-height: 1.3; margin: 0 0 .5em; font-weight: 700; letter-spacing: .01em; }
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+
+.skip { position: absolute; left: -999px; top: 0; background: var(--brand); color: #fff; padding: 8px 12px; }
+.skip:focus { left: 8px; z-index: 100; }
+
+/* 頂欄 */
+.topbar { background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+.topbar .wrap { display: flex; align-items: center; min-height: 56px; }
+.brand { color: var(--text); font-weight: 700; font-size: 1.05rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .6em; }
+.brand:hover { text-decoration: none; }
+.brand-sub { color: var(--muted); font-weight: 500; font-size: .9rem; }
+
+/* HERO */
+.hero { position: relative; isolation: isolate; min-height: 52vw; max-height: 520px; display: flex; align-items: flex-end; overflow: hidden; background: var(--brand-dark); }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; z-index: -2; }
+.hero-overlay { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(8, 30, 40, .05) 0%, rgba(8, 30, 40, .55) 60%, rgba(8, 30, 40, .82) 100%); }
+.hero-text { color: #fff; padding-top: 48px; padding-bottom: 28px; text-shadow: 0 1px 12px rgba(0, 0, 0, .45); }
+.hero-text h1 { font-size: clamp(1.7rem, 5.5vw, 2.8rem); margin: 0; }
+.hero-sub { margin: .1em 0 .4em; font-size: clamp(1.05rem, 3.2vw, 1.4rem); font-weight: 600; opacity: .95; }
+.hero-tagline { margin: 0; max-width: 40rem; font-size: clamp(.95rem, 2.6vw, 1.05rem); opacity: .92; }
+@media (min-width: 720px) { .hero { min-height: 380px; } }
+
+/* 卡片 */
+main { padding: 28px 20px 48px; }
+.section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 14px; }
+.section-head h2 { margin: 0; font-size: 1.35rem; }
+.site-updated { margin: 0; color: var(--muted); font-size: .9rem; }
+.cards { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 640px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 960px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 18px 14px; display: flex; flex-direction: column; min-width: 0; transition: transform .15s ease, box-shadow .15s ease; }
+.card:hover { transform: translateY(-2px); }
+.card-link { color: inherit; flex: 1; }
+.card-link:hover { text-decoration: none; }
+.card-link:hover .card-title { color: var(--brand); }
+.card-title { font-size: 1.12rem; margin-bottom: .35em; }
+.card-summary { margin: 0 0 12px; color: var(--muted); font-size: .95rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* 日期／作者／瀏覽 */
+.meta { display: flex; flex-wrap: wrap; gap: 4px 14px; color: var(--muted); font-size: .85rem; }
+.meta-item { white-space: nowrap; }
+.views { font-variant-numeric: tabular-nums; }
+
+/* 文章頁 */
+.post-wrap { max-width: var(--content); }
+.crumbs { margin: 4px 0 18px; font-size: .95rem; }
+.post-head h1 { font-size: clamp(1.55rem, 5vw, 2.2rem); }
+.post-head .meta { margin-bottom: 20px; }
+.post-hero { margin: 0 0 24px; }
+.post-hero img { width: 100%; max-width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+.post-hero figcaption, .credit { color: var(--muted); font-size: .8rem; margin-top: 8px; line-height: 1.5; }
+.post-body > :first-child { margin-top: 0; }
+.post-body h2 { font-size: 1.4rem; margin-top: 1.8em; padding-bottom: .25em; border-bottom: 1px solid var(--line); }
+.post-body h3 { font-size: 1.15rem; margin-top: 1.5em; }
+.post-body p, .post-body ul, .post-body ol { margin: 0 0 1.1em; }
+.post-body li { margin-bottom: .3em; }
+.post-body img { margin: 1em auto; border-radius: 10px; }
+.post-body blockquote { margin: 1.2em 0; padding: 10px 16px; border-left: 4px solid var(--brand); background: var(--brand-soft); border-radius: 0 10px 10px 0; }
+.post-body blockquote p:last-child { margin-bottom: 0; }
+.post-body code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .92em; background: var(--brand-soft); padding: .1em .35em; border-radius: 5px; }
+.post-body pre { overflow-x: auto; background: #10202a; color: #e7eef4; padding: 14px 16px; border-radius: 10px; max-width: 100%; }
+.post-body pre code { background: none; padding: 0; color: inherit; }
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 1.2em 0; -webkit-overflow-scrolling: touch; }
+.post-body table { border-collapse: collapse; min-width: 100%; font-size: .95rem; }
+.post-body th, .post-body td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+.post-body th { background: var(--brand-soft); }
+.post-body hr { border: 0; border-top: 1px solid var(--line); margin: 2em 0; }
+
+/* 頁尾 */
+.footer { border-top: 1px solid var(--line); background: var(--surface); color: var(--muted); font-size: .85rem; padding: 24px 0 36px; }
+.footer p { margin: 0 0 8px; }

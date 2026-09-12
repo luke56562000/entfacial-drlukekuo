@@ -1,0 +1,8 @@
+name = "entfacial-drlukekuo"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "dist"
+
+# 瀏覽計數器使用的 KV（Pages Functions 透過 env.VIEWS 存取）
+[[kv_namespaces]]
+binding = "VIEWS"
+id = "1ac1b74f65924a9fab7c5de49630d829"

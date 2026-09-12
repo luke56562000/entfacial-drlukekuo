@@ -1,0 +1,15 @@
+{
+  "name": "entfacial-drlukekuo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "路克醫師 郭哲宏｜耳鼻喉顏面外科 部落格",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js && wrangler pages dev dist",
+    "deploy": "node build.js && wrangler pages deploy dist"
+  },
+  "dependencies": {
+    "marked": "^15.0.0"
+  }
+}
