@@ -136,7 +136,7 @@ function dateMeta(p, { withViews = true } = {}) {
   return `<div class="meta">${s}</div>`;
 }
 
-function layout({ title, description, canonical, body, bodyAttrs = '', ogImage, ogType = 'website' }) {
+function layout({ title, description, canonical, body, bodyAttrs = '', ogImage, ogType = 'website', head = '' }) {
   const fullTitle = title ? `${title}｜${site.title} ${site.subtitle}` : `${site.title}｜${site.subtitle}`;
   return `<!doctype html>
 <html lang="${esc(site.lang)}">
@@ -156,7 +156,7 @@ function layout({ title, description, canonical, body, bodyAttrs = '', ogImage, 
 <link rel="alternate" type="application/rss+xml" title="${esc(site.title)}" href="/feed.xml">
 <link rel="icon" href="${ASSET.icon}" type="image/svg+xml">
 <link rel="stylesheet" href="${ASSET.css}">
-</head>
+${head}</head>
 <body${bodyAttrs}>
 <a class="skip" href="#main">跳到主要內容</a>
 <header class="topbar">
@@ -238,6 +238,25 @@ ${p.html}
   </article>
 </main>`;
 
+  // 給搜尋引擎的結構化資料（BlogPosting）
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: p.title,
+    description: p.summary,
+    image: p.image ? [site.url + p.image] : undefined,
+    datePublished: p.published.toISOString(),
+    dateModified: p.updated.toISOString(),
+    author: { '@type': 'Person', name: p.author },
+    publisher: { '@type': 'Organization', name: `${site.title} ${site.subtitle}`, url: site.url },
+    mainEntityOfPage: p.url,
+    inLanguage: site.lang,
+  };
+  const head = `<meta property="article:published_time" content="${p.published.toISOString()}">
+<meta property="article:modified_time" content="${p.updated.toISOString()}">
+<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
+`;
+
   return layout({
     title: p.title,
     description: p.summary,
@@ -246,6 +265,7 @@ ${p.html}
     bodyAttrs: ` data-post="${esc(p.slug)}"`,
     ogImage: p.image,
     ogType: 'article',
+    head,
   });
 }
 
