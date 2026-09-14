@@ -61,5 +61,26 @@
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
     "note": "已縮圖與裁切"
+  },
+  "podcast": {
+    "title": "健康噗克牌",
+    "desc": "路克醫師和朋友們的健康 Podcast：把耳鼻喉、兒童健康、季節流行病與生活裡的醫學迷思，用聊天的方式說給你聽。",
+    "rss": "https://feeds.buzzsprout.com/2627093.rss",
+    "buzzsproutId": "2627093",
+    "apple": {
+      "id": "6787155817",
+      "showUrl": "https://podcasts.apple.com/tw/podcast/id6787155817"
+    },
+    "spotify": {
+      "showUrl": "https://open.spotify.com/show/033LHpaQGEcHEbAWYDlCMm"
+    },
+    "youtube": {
+      "showUrl": "https://www.youtube.com/playlist?list=PLYJZj7eIA4k4"
+    },
+    "episodeLinks": {
+      "19789024": {
+        "spotify": "https://open.spotify.com/episode/3WAN2VdiITGsKTMjzrUkl0"
+      }
+    }
   }
 }

@@ -237,6 +237,109 @@ ${body}
 `;
 }
 
+
+// ---------- Podcast：建置時讀 RSS 與 Apple Podcasts API，失敗則用 podcast.cache.json ----------
+const PODCAST_CACHE = join(ROOT, 'podcast.cache.json');
+const xmlText = (tag, x) => {
+  const m = x.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`));
+  if (!m) return '';
+  return m[1].replace(/^<!\[CDATA\[([\s\S]*?)\]\]>$/, '$1').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
+};
+const normTitle = (t) => t.replace(/\s+/g, '').replace(/[「」『』（）()｜|？?！!。，,、：:—\-]/g, '').toLowerCase();
+const fmtDuration = (sec) => { sec = Number(sec) || 0; const m = Math.round(sec / 60); return m ? `${m} 分鐘` : ''; };
+
+async function loadPodcast() {
+  const pc = site.podcast;
+  if (!pc) return null;
+  let episodes = null;
+  try {
+    const rss = await (await fetch(pc.rss, { signal: AbortSignal.timeout(20000) })).text();
+    const items = rss.match(/<item>[\s\S]*?<\/item>/g) || [];
+    episodes = items.map((it) => {
+      const enclosure = (it.match(/<enclosure[^>]*url="([^"]+)"/) || [])[1] || '';
+      const bzId = (enclosure.match(/\/episodes\/(\d+)/) || [])[1] || '';
+      return {
+        id: bzId,
+        title: xmlText('title', it),
+        date: new Date(xmlText('pubDate', it)),
+        duration: xmlText('itunes:duration', it),
+        summary: xmlText('itunes:summary', it) || xmlText('description', it),
+        page: bzId ? `https://www.buzzsprout.com/${pc.buzzsproutId}/episodes/${bzId}` : xmlText('link', it),
+        audio: enclosure,
+      };
+    });
+    // Apple Podcasts 單集連結：用標題比對
+    try {
+      const j = await (await fetch(`https://itunes.apple.com/lookup?id=${pc.apple.id}&country=TW&entity=podcastEpisode&limit=200`, { signal: AbortSignal.timeout(20000) })).json();
+      const apple = (j.results || []).filter((r) => r.kind === 'podcast-episode');
+      for (const e of episodes) {
+        const hit = apple.find((a) => normTitle(a.trackName) === normTitle(e.title));
+        if (hit) e.apple = hit.trackViewUrl;
+      }
+    } catch (err) { console.warn('Apple Podcasts API 讀取失敗，單集連結改連節目頁：', err.message); }
+    writeFileSync(PODCAST_CACHE, JSON.stringify(episodes, null, 2));
+  } catch (err) {
+    console.warn('Podcast RSS 讀取失敗，改用快取：', err.message);
+    if (existsSync(PODCAST_CACHE)) episodes = JSON.parse(readFileSync(PODCAST_CACHE, 'utf8')).map((e) => ({ ...e, date: new Date(e.date) }));
+    else return null;
+  }
+  // 手動補的 Spotify / YouTube 單集連結
+  for (const e of episodes) Object.assign(e, pc.episodeLinks?.[e.id] || {});
+  episodes.sort((a, b) => b.date - a.date);
+  return episodes;
+}
+
+const ICON = {
+  apple: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.33c-.1-.75-.2-1.9-.05-2.72l.7-3.2c.14-.63.5-1.12 1.1-1.12h3.7c.6 0 .96.5 1.1 1.12l.7 3.2c.15.82.05 1.97-.05 2.72A10 10 0 0 0 12 2Zm0 4.5a3.75 3.75 0 0 1 2.3 6.7 5.9 5.9 0 0 0-4.6 0A3.75 3.75 0 0 1 12 6.5Zm0 1.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0-4a6.5 6.5 0 0 1 4.6 11.1l-1.07-1.07A5 5 0 1 0 8.47 14.03L7.4 15.1A6.5 6.5 0 0 1 12 4Z"/></svg>',
+  spotify: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.24 14.5a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.1-10.55-1.15a.75.75 0 1 1-.33-1.46c4.56-1.04 8.48-.6 11.66 1.34.35.21.46.67.25 1.02Zm1.2-2.9a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 1 1-.54-1.8c4.36-1.32 9.79-.68 13.5 1.6.44.27.58.85.3 1.29Zm.1-3.02c-3.87-2.3-10.26-2.51-13.96-1.39a1.13 1.13 0 1 1-.65-2.16c4.24-1.29 11.3-1.04 15.76 1.61a1.13 1.13 0 0 1-1.15 1.94Z"/></svg>',
+  youtube: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5ZM9.6 15.5v-7l6.2 3.5-6.2 3.5Z"/></svg>',
+};
+
+function renderPodcast(episodes) {
+  const pc = site.podcast;
+  const plink = (kind, label, e) => {
+    const url = e?.[kind] || pc[kind]?.showUrl;
+    if (!url) return '';
+    const level = e?.[kind] ? 'episode' : 'show';
+    const title = level === 'episode' ? `在 ${label} 收聽這一集` : `在 ${label} 收聽（節目頁）`;
+    return `<a class="plink plink-${kind}" data-level="${level}" href="${esc(url)}" target="_blank" rel="noopener" title="${esc(title)}" aria-label="${esc(title)}">${ICON[kind]}</a>`;
+  };
+  const list = (episodes || []).map((e) => `
+      <li class="episode">
+        <div class="episode-main">
+          <div class="episode-meta"><time datetime="${e.date.toISOString()}">${fmtDate(e.date)}</time>${e.duration ? `<span>${fmtDuration(e.duration)}</span>` : ''}</div>
+          <h3 class="episode-title"><a href="${esc(e.page)}" target="_blank" rel="noopener">${esc(e.title)}</a></h3>
+        </div>
+        <div class="episode-links">${plink('apple', 'Apple Podcasts', e)}${plink('spotify', 'Spotify', e)}${plink('youtube', 'YouTube', e)}</div>
+      </li>`).join('');
+
+  const body = `
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <nav class="crumbs"><a href="/">首頁</a> › Podcast</nav>
+      <h1>🎙️ ${esc(pc.title)}</h1>
+      <p class="page-lead">${esc(pc.desc)}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap post-wrap">
+      <div class="pod-platforms">
+        <a class="btn btn-primary" href="${esc(pc.apple.showUrl)}" target="_blank" rel="noopener">${ICON.apple} Apple Podcasts</a>
+        <a class="btn btn-ghost" href="${esc(pc.spotify.showUrl)}" target="_blank" rel="noopener">${ICON.spotify} Spotify</a>
+        <a class="btn btn-ghost" href="${esc(pc.youtube.showUrl)}" target="_blank" rel="noopener">${ICON.youtube} YouTube</a>
+      </div>
+      <p class="site-updated" style="margin:0 0 20px">點標題可到節目頁收聽；右側圖示直接開啟各平台的該集（淡色圖示表示該平台尚無單集連結，會開啟節目頁）。</p>
+      <div class="pod-player"><iframe src="https://www.buzzsprout.com/${esc(pc.buzzsproutId)}?client_source=large_player&iframe=true" loading="lazy" title="${esc(pc.title)} 播放器"></iframe></div>
+      <h2 class="section-title">全部集數</h2>
+      <ol class="episodes">${list || '<li>目前讀不到集數，請稍後再試。</li>'}
+      </ol>
+    </div>
+  </section>
+</main>`;
+  return layout({ title: 'Podcast', description: `${pc.title}｜${pc.desc}`, canonical: `${site.url}/podcast/`, body, current: '/podcast/' });
+}
+
 // ---------- 各頁 ----------
 function renderIndex(posts) {
   const lastUpdated = posts.length ? fmtDate(posts[0].updated) : fmtDate(new Date());
@@ -402,6 +505,7 @@ function renderSitemap(posts, pages) {
     `  <url><loc>${esc(site.url)}/</loc></url>`,
     ...site.categories.map((c) => `  <url><loc>${esc(site.url)}/${c.slug}/</loc></url>`),
     ...pages.map((pg) => `  <url><loc>${esc(pg.url)}</loc></url>`),
+    ...(site.podcast ? [`  <url><loc>${esc(site.url)}/podcast/</loc></url>`] : []),
     ...posts.map((p) => `  <url><loc>${esc(p.url)}</loc><lastmod>${fmtDate(p.updated)}</lastmod></url>`),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rows.join('\n')}\n</urlset>\n`;
@@ -439,6 +543,11 @@ for (const pg of pages) {
   mkdirSync(join(OUT, pg.slug), { recursive: true });
   writeFileSync(join(OUT, pg.slug, 'index.html'), renderPage(pg));
 }
+const episodes = await loadPodcast();
+if (site.podcast) {
+  mkdirSync(join(OUT, 'podcast'), { recursive: true });
+  writeFileSync(join(OUT, 'podcast', 'index.html'), renderPodcast(episodes));
+}
 writeFileSync(join(OUT, 'sitemap.xml'), renderSitemap(posts, pages));
 writeFileSync(join(OUT, 'feed.xml'), renderFeed(posts));
 writeFileSync(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
@@ -449,5 +558,5 @@ writeFileSync(join(OUT, '404.html'), layout({
   body: `<main id="main" class="wrap post-wrap"><h1>找不到頁面</h1><p>這個網址不存在，<a href="/">回首頁</a>看看最新文章。</p></main>`,
 }));
 
-console.log(`建置完成：${posts.length} 篇文章、${site.categories.length} 個分類、${pages.length} 個固定頁`);
+console.log(`建置完成：${posts.length} 篇文章、${site.categories.length} 個分類、${pages.length} 個固定頁、Podcast ${episodes?.length ?? 0} 集`);
 for (const p of posts) console.log(`  /${p.slug}/  [${p.category?.name || '未分類'}]  發布 ${fmtDate(p.published)}  更新 ${fmtDate(p.updated)}  ${p.title}`);

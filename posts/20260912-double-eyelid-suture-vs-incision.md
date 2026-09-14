@@ -3,9 +3,9 @@ title: 縫雙眼皮還是割雙眼皮？從最新研究數據看怎麼選
 date: 2026-09-12
 category: 眼周整形
 summary: 縫合式（埋線）恢復快、可逆，但線可能鬆；切開式一勞永逸，但要換來疤痕和較長的恢復期。這篇用近三年的大樣本研究，說明兩種方法真正的差別，以及誰適合哪一種。
-image: /assets/eyes-double-eyelid-soft.jpg
-image_alt: 女性柔和的雙眼特寫，可見清楚的雙眼皮摺痕
-image_credit: 照片：<a href="https://www.flickr.com/photos/13514207@N00/4113796363" rel="noopener">Blue Eyes Misty</a> — <a href="https://www.flickr.com/photos/13514207@N00" rel="noopener">WillieskoStudios.com</a>，<a href="https://creativecommons.org/licenses/by/2.0/" rel="noopener">CC BY 2.0</a>，via Flickr
+image: /assets/eye-soft-single.jpg
+image_alt: 自然光下女性單眼特寫，眼皮摺痕清楚、神情柔和
+image_credit: 照片：<a href="https://www.flickr.com/photos/logan_paige/8033888709" rel="noopener">Beauty Is In The Eyes Of The Beholder</a> — <a href="https://www.flickr.com/photos/logan_paige/" rel="noopener">Logan Prochaska</a>，<a href="https://creativecommons.org/licenses/by/2.0/" rel="noopener">CC BY 2.0</a>，via Flickr
 ---
 
 「我想做雙眼皮，但到底該縫還是該割？」這是門診最常被問的問題之一。網路上的答案通常很簡短：「縫的會掉、割的不會」。這句話對一半，錯一半。
