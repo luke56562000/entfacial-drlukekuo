@@ -24,6 +24,10 @@
     {
       "label": "門診與掛號",
       "href": "/clinic/"
+    },
+    {
+      "label": "Podcast",
+      "href": "/podcast/"
     }
   ],
   "categories": [
@@ -41,7 +45,7 @@
     }
   ],
   "hero": {
-    "src": "/hero-or.jpg",
+    "src": "/hero-or2.jpg",
     "alt": "郭哲宏醫師配戴頭燈於手術室進行內視鏡手術的插畫",
     "width": 1446,
     "height": 1087
