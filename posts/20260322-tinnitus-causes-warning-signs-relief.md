@@ -2,6 +2,7 @@
 title: 為什麼耳朵一直嗡嗡叫？認識耳鳴的原因、警訊與改善方法
 date: 2026-03-22
 author: 郭哲宏 醫師
+category: 耳鼻喉
 summary: 耳鳴（Tinnitus）是耳朵在沒有外界聲音時仍聽到嗡嗡、蟬鳴或嘶嘶聲，約 10～20% 的人曾經歷。耳鼻喉科醫師整理耳鳴的常見原因、需要立即就醫的警訊、檢查與治療方式，以及日常改善的 5 個建議。
 image: /assets/tinnitus-ringing-ears.jpg
 image_alt: 四位不同年齡的人皆因耳鳴而摀住耳朵、表情困擾的插畫

@@ -2,6 +2,7 @@
 title: 鼻中膈彎曲一定要開刀嗎？小心打呼、鼻塞、頭痛通通來！
 date: 2024-03-23
 author: 郭哲宏 醫師
+category: 耳鼻喉
 summary: 長期鼻塞、打呼、頭昏，吃藥卻改善有限？可能不是單純過敏，而是鼻中膈彎曲。耳鼻喉科醫師說明鼻中膈彎曲的成因與症狀、哪些情況需要手術、內視鏡微創鼻中膈矯正手術怎麼做、外觀會不會留疤，以及術後恢復注意事項。
 image: none
 og_image: /assets/deviated-septum-cross-section.jpg

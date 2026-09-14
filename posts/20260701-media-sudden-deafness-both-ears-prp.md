@@ -2,6 +2,7 @@
 title: 媒體報導：43 歲作業員 5 年內雙耳先後「突發性耳聾」，類固醇＋PRP 耳內注射積極治療
 date: 2026-07-01
 author: 郭哲宏 醫師
+category: 耳鼻喉
 summary: 43 歲機械操作員 5 年前左耳突發性耳聾，近期右耳又聽不到並伴隨頭暈。澄清醫院耳鼻喉科郭哲宏醫師說明突發性耳聾的診斷標準、可能成因，以及類固醇搭配 PRP 高濃度血小板血漿耳內注射的治療經過。
 image: /assets/intratympanic-injection-clinic.jpg
 image_alt: 郭哲宏醫師配戴頭燈在診間為患者進行耳內注射治療
