@@ -1,11 +1,11 @@
 /* 路克醫師 郭哲宏｜耳鼻喉顏面外科 —— 深藍綠主題、手機優先、不破框 */
 :root {
-  --bg: #f5f8f9;
+  --bg: #e4eef0;
   --surface: #ffffff;
-  --tint: #e9f2f3;
+  --tint: #d6e5e8;
   --text: #16262c;
   --muted: #59707a;
-  --line: #d9e4e7;
+  --line: #c9dadd;
   --brand: #0b5563;        /* 深藍綠 */
   --brand-dark: #073c46;
   --brand-light: #1d7d8f;
@@ -62,7 +62,7 @@ h1, h2, h3, h4 { line-height: 1.3; margin: 0 0 .5em; font-weight: 700; letter-sp
 .brand { color: var(--text); font-weight: 800; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .55em; min-width: 0; }
 .brand:hover { text-decoration: none; }
 .brand-name { font-size: 1.1rem; color: var(--brand); }
-.brand-sub { color: var(--muted); font-weight: 500; font-size: .88rem; }
+.brand-sub { display: none; }
 .nav { display: flex; gap: 4px; }
 .nav a { color: var(--text); font-weight: 600; font-size: .95rem; padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
 .nav a:hover { background: var(--brand-soft); text-decoration: none; color: var(--brand); }
@@ -80,15 +80,16 @@ h1, h2, h3, h4 { line-height: 1.3; margin: 0 0 .5em; font-weight: 700; letter-sp
 }
 
 /* ---------- HERO：全幅圖，左側淡出留白放文字 ---------- */
-.hero { position: relative; isolation: isolate; background: #eef4f6; overflow: hidden; }
+.hero { position: relative; isolation: isolate; background: #e3edf0; overflow: hidden; }
 .hero-media { position: absolute; inset: 0; z-index: -1; }
-.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 78% 10%; }
+.hero-media img { width: 66%; height: 100%; margin-left: auto; object-fit: cover; object-position: 50% 18%;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 28%); mask-image: linear-gradient(to right, transparent, #000 28%); }
 /* 左側：乾淨留白（帶一點模糊感的漸層），右側保留插畫 */
 .hero-media::after { content: ""; position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, rgba(240, 246, 248, .98) 0%, rgba(240, 246, 248, .96) 34%, rgba(240, 246, 248, .72) 50%, rgba(240, 246, 248, .18) 66%, rgba(240, 246, 248, 0) 80%),
-    linear-gradient(180deg, rgba(240, 246, 248, 0) 70%, rgba(240, 246, 248, .55) 100%); }
-.hero-inner { position: relative; min-height: clamp(360px, 46vw, 640px); display: flex; align-items: center; }
+    linear-gradient(90deg, rgba(227, 237, 240, 1) 0%, rgba(227, 237, 240, .98) 30%, rgba(227, 237, 240, .7) 44%, rgba(227, 237, 240, .15) 58%, rgba(227, 237, 240, 0) 70%),
+    linear-gradient(180deg, rgba(227, 237, 240, 0) 72%, rgba(227, 237, 240, .5) 100%); }
+.hero-inner { position: relative; min-height: clamp(340px, 38vw, 540px); display: flex; align-items: center; }
 .hero-text { max-width: 34rem; padding: 40px 0 44px; color: #12262c; }
 .hero-kicker { margin: 0 0 6px; font-weight: 700; letter-spacing: .12em; color: #1d7d8f; font-size: .95rem; }
 .hero-text h1 { font-size: clamp(2rem, 5.2vw, 3.2rem); margin: 0 0 .25em; color: #0b3a44; }
@@ -104,8 +105,8 @@ h1, h2, h3, h4 { line-height: 1.3; margin: 0 0 .5em; font-weight: 700; letter-sp
 @media (max-width: 720px) {
   /* 手機：圖在上、文字在下，圖底部淡入文字區 */
   .hero-media { position: relative; inset: auto; aspect-ratio: 4 / 3; z-index: 0; }
-  .hero-media img { object-position: 70% 40%; }
-  .hero-media::after { background: linear-gradient(180deg, rgba(240, 246, 248, 0) 55%, rgba(240, 246, 248, .9) 92%, #f0f6f8 100%); }
+  .hero-media img { width: 100%; object-position: 50% 40%; -webkit-mask-image: none; mask-image: none; }
+  .hero-media::after { background: linear-gradient(180deg, rgba(227, 237, 240, 0) 55%, rgba(227, 237, 240, .9) 92%, #e3edf0 100%); }
   .hero-inner { min-height: 0; margin-top: -12px; }
   .hero-text { padding: 0 0 32px; max-width: none; }
 }
