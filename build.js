@@ -206,7 +206,7 @@ ${head}</head>
 <a class="skip" href="#main">跳到主要內容</a>
 <header class="topbar">
   <div class="wrap topbar-inner">
-    <a class="brand" href="/"><span class="brand-name">${esc(site.title)}</span><span class="brand-sub">${esc(site.subtitle)}</span></a>
+    <a class="brand" href="/">${esc(site.brand)}<span class="brand-sub">${esc(site.title)}</span></a>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
     <label for="nav-toggle" class="nav-btn" aria-label="開啟選單"><span></span><span></span><span></span></label>
     <nav class="nav" aria-label="主選單">

@@ -1,4 +1,5 @@
 {
+  "brand": "DrLukeKuo",
   "title": "路克醫師 郭哲宏",
   "subtitle": "耳鼻喉顏面外科",
   "tagline": "看得懂的耳鼻喉科，聊得來的顏面美學",
@@ -8,14 +9,36 @@
   "lang": "zh-Hant-TW",
   "registerUrl": "https://ck.ccgh.com.tw/register_detail.htm?pkId=110&typeName=%E5%85%B6%E4%BB%96%E5%B0%88%E7%A7%91%E7%B3%BB&deptName=%E8%80%B3%E9%BC%BB%E5%96%89%E7%A7%91",
   "nav": [
-    { "label": "關於", "href": "/about/" },
-    { "label": "耳鼻喉", "href": "/ent/" },
-    { "label": "眼周整形", "href": "/eyelid/" },
-    { "label": "門診與掛號", "href": "/clinic/" }
+    {
+      "label": "關於",
+      "href": "/about/"
+    },
+    {
+      "label": "耳鼻喉",
+      "href": "/ent/"
+    },
+    {
+      "label": "眼周整形",
+      "href": "/eyelid/"
+    },
+    {
+      "label": "門診與掛號",
+      "href": "/clinic/"
+    }
   ],
   "categories": [
-    { "slug": "ent", "name": "耳鼻喉", "desc": "鼻塞、耳鳴、突發性耳聾、鼻中膈與下鼻甲手術⋯⋯耳、鼻、喉的常見問題、檢查與治療。", "icon": "👂" },
-    { "slug": "eyelid", "name": "眼周整形", "desc": "雙眼皮、眼周美學與手術方式的選擇，用研究數據和臨床經驗陪你做決定。", "icon": "👁️" }
+    {
+      "slug": "ent",
+      "name": "耳鼻喉",
+      "desc": "鼻塞、耳鳴、突發性耳聾、鼻中膈與下鼻甲手術⋯⋯耳、鼻、喉的常見問題、檢查與治療。",
+      "icon": "👂"
+    },
+    {
+      "slug": "eyelid",
+      "name": "眼周整形",
+      "desc": "雙眼皮、眼周美學與手術方式的選擇，用研究數據和臨床經驗陪你做決定。",
+      "icon": "👁️"
+    }
   ],
   "hero": {
     "src": "/hero-or.jpg",
