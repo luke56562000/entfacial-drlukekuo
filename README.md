@@ -33,10 +33,10 @@ Dr. Luke Kuo — ENT & Facial Plastic Surgery blog
 - **更新日期**：自動取該檔最後一次 git commit 的時間，修改文章後 push 就會更新，首頁卡片也會依更新日期重新排序（最新在前）。
 - 想暫時不公開：frontmatter 加 `draft: true`。
 
-## 固定頁（關於、門診與掛號）
+## 關於、門診與掛號、Podcast
 
-`pages/about.md`、`pages/clinic.md`，開頭 frontmatter 放 `title` 與 `description`，下面用 Markdown 寫內容，push 後對應網址 `/about/`、`/clinic/`。
-右上角選單與分類定義在 `site.config.json` 的 `nav` 與 `categories`。
+這三頁的內容都在 `site.config.json`：`about`（照片、現任／學歷／經歷／證照、社群）、`clinic`（院所、地址、掛號連結）、`podcast`（RSS、平台連結）。改完 push 就會重建。
+右上角選單與分類定義在 `site.config.json` 的 `nav` 與 `categories`。其他固定頁可放 `pages/*.md`。
 
 ## 本機預覽
 

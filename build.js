@@ -299,6 +299,17 @@ async function loadPodcast() {
         if (hit) e.apple = hit.trackViewUrl;
       }
     } catch (err) { console.warn('Apple Podcasts API 讀取失敗，單集連結改連節目頁：', err.message); }
+    // YouTube 頻道 RSS（官方、穩定）：用標題比對單集影片
+    if (pc.youtube?.channelId) {
+      try {
+        const yt = await (await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${pc.youtube.channelId}`, { signal: AbortSignal.timeout(20000) })).text();
+        const vids = [...yt.matchAll(/<entry>[\s\S]*?<\/entry>/g)].map((m) => ({ id: (m[0].match(/<yt:videoId>([^<]+)</) || [])[1], title: xmlText('title', m[0]) })).filter((v) => v.id);
+        for (const e of episodes) {
+          const hit = vids.find((v) => normTitle(v.title) === normTitle(e.title));
+          if (hit) e.youtube = `https://www.youtube.com/watch?v=${hit.id}`;
+        }
+      } catch (err) { console.warn('YouTube RSS 讀取失敗：', err.message); }
+    }
     writeFileSync(PODCAST_CACHE, JSON.stringify(episodes, null, 2));
   } catch (err) {
     console.warn('Podcast RSS 讀取失敗，改用快取：', err.message);
@@ -306,7 +317,7 @@ async function loadPodcast() {
     else return null;
   }
   // 手動補的 Spotify / YouTube 單集連結
-  for (const e of episodes) Object.assign(e, pc.episodeLinks?.[e.id] || {});
+  for (const e of episodes) for (const [k, v] of Object.entries(pc.episodeLinks?.[e.id] || {})) if (!e[k]) e[k] = v;
   episodes.sort((a, b) => b.date - a.date);
   return episodes;
 }
@@ -363,6 +374,84 @@ function renderPodcast(episodes) {
   </section>
 </main>`;
   return layout({ title: 'Podcast', description: `${pc.title}｜${pc.desc.replace(/<[^>]+>/g, '')}`, canonical: `${site.url}/podcast/`, body, current: '/podcast/' });
+}
+
+
+function renderAbout() {
+  const a = site.about;
+  const sections = a.sections.map((sec) => `
+      <section class="about-block">
+        <h2 class="about-h">${esc(sec.title)}</h2>
+        <ul class="about-list">${sec.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
+      </section>`).join('');
+  const social = a.social.map((so) => `
+        <a class="social-link" href="${esc(so.url)}" target="_blank" rel="noopener">
+          <span class="social-icon social-${esc(so.kind)}">${ICON[so.kind] || ''}</span>
+          <span class="social-text"><span class="social-label">${esc(so.label)}</span><span class="social-name">${esc(so.name)}</span></span>
+        </a>`).join('');
+  const body = `
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <nav class="crumbs"><a href="/">首頁</a> › 關於</nav>
+      <h1>醫師簡介</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap about-page">
+      <div class="profile">
+        <img class="profile-photo" src="${esc(a.photo)}" alt="${esc(a.photoAlt)}" width="460" height="516">
+        <div class="profile-text">
+          <p class="profile-name">${esc(a.name)}</p>
+          <p class="profile-sub">${esc(a.sub)}</p>
+          <p class="motto">${a.motto.map((m) => `<span class="motto-clause">${esc(m)}</span>`).join('')}</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="/clinic/">門診與掛號</a>
+            <a class="btn btn-ghost" href="/ent/">看衛教文章</a>
+          </div>
+        </div>
+      </div>
+      ${sections}
+      <section class="about-block">
+        <h2 class="about-h">社群</h2>
+        <div class="social-links">${social}
+        </div>
+      </section>
+    </div>
+  </section>
+</main>`;
+  return layout({ title: '關於', description: `${a.name}（${a.sub}）簡介：現任、學歷、經歷、專業證照與社群。`, canonical: `${site.url}/about/`, body, current: '/about/' });
+}
+
+function renderClinic() {
+  const c = site.clinic;
+  const sites = c.sites.map((st) => `
+      <article class="clinic-card">
+        <h2 class="clinic-name">${esc(st.name)}</h2>
+        <p class="clinic-dept">${esc(st.dept || '')}</p>
+        ${st.address ? `<p class="clinic-line">📍 ${esc(st.address)}</p>` : ''}
+        ${st.phone ? `<p class="clinic-line">☎️ <a href="tel:${esc(st.phone.replace(/-/g, ''))}">${esc(st.phone)}</a></p>` : ''}
+        ${st.note ? `<p class="clinic-line">${esc(st.note)}</p>` : ''}
+        ${st.registerUrl ? `<a class="btn btn-primary" href="${esc(st.registerUrl)}" target="_blank" rel="noopener">${esc(st.registerLabel || '線上掛號')} ↗</a>` : '<p class="clinic-line muted">門診時間與掛號方式請洽診所</p>'}
+      </article>`).join('');
+  const body = `
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <nav class="crumbs"><a href="/">首頁</a> › 門診與掛號</nav>
+      <h1>門診與掛號</h1>
+      <p class="page-lead">${esc(c.intro)}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap about-page">
+      <div class="clinics">${sites}
+      </div>
+      <p class="site-updated" style="margin-top:18px">看診時段可能異動，掛號前請以醫院／診所公告為準。</p>
+    </div>
+  </section>
+</main>`;
+  return layout({ title: '門診與掛號', description: '郭哲宏醫師門診院所與線上掛號連結。', canonical: `${site.url}/clinic/`, body, current: '/clinic/' });
 }
 
 // ---------- 各頁 ----------
@@ -536,6 +625,8 @@ function renderSitemap(posts, pages) {
     `  <url><loc>${esc(site.url)}/</loc></url>`,
     ...site.categories.map((c) => `  <url><loc>${esc(site.url)}/${c.slug}/</loc></url>`),
     ...pages.map((pg) => `  <url><loc>${esc(pg.url)}</loc></url>`),
+    ...(site.about ? [`  <url><loc>${esc(site.url)}/about/</loc></url>`] : []),
+    ...(site.clinic ? [`  <url><loc>${esc(site.url)}/clinic/</loc></url>`] : []),
     ...(site.podcast ? [`  <url><loc>${esc(site.url)}/podcast/</loc></url>`] : []),
     ...posts.map((p) => `  <url><loc>${esc(p.url)}</loc><lastmod>${fmtDate(p.updated)}</lastmod></url>`),
   ];
@@ -574,6 +665,8 @@ for (const pg of pages) {
   mkdirSync(join(OUT, pg.slug), { recursive: true });
   writeFileSync(join(OUT, pg.slug, 'index.html'), renderPage(pg));
 }
+if (site.about) { mkdirSync(join(OUT, 'about'), { recursive: true }); writeFileSync(join(OUT, 'about', 'index.html'), renderAbout()); }
+if (site.clinic) { mkdirSync(join(OUT, 'clinic'), { recursive: true }); writeFileSync(join(OUT, 'clinic', 'index.html'), renderClinic()); }
 const episodes = await loadPodcast();
 if (site.podcast) {
   mkdirSync(join(OUT, 'podcast'), { recursive: true });

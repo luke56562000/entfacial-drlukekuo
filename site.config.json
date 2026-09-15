@@ -22,6 +22,10 @@
       "href": "/eyelid/"
     },
     {
+      "label": "健康新知",
+      "href": "/health/"
+    },
+    {
       "label": "門診與掛號",
       "href": "/clinic/"
     },
@@ -81,12 +85,125 @@
       "showUrl": "https://open.spotify.com/show/033LHpaQGEcHEbAWYDlCMm"
     },
     "youtube": {
-      "showUrl": "https://www.youtube.com/playlist?list=PLYJZj7eIA4k4"
+      "showUrl": "https://www.youtube.com/channel/UCdG0NZKNx4hOqixF792uKjQ",
+      "channelId": "UCdG0NZKNx4hOqixF792uKjQ"
     },
     "episodeLinks": {
       "19789024": {
-        "spotify": "https://open.spotify.com/episode/3WAN2VdiITGsKTMjzrUkl0"
+        "spotify": "https://open.spotify.com/episode/3WAN2VdiITGsKTMjzrUkl0",
+        "youtube": "https://www.youtube.com/watch?v=71VJOqIaio8"
+      },
+      "19749642": {
+        "youtube": "https://www.youtube.com/watch?v=ktEzWl-VJuI"
+      },
+      "19720567": {
+        "youtube": "https://www.youtube.com/watch?v=Gm3ju59z5kE"
+      },
+      "19612160": {
+        "youtube": "https://www.youtube.com/watch?v=lHff9fFge8k"
+      },
+      "19508537": {
+        "youtube": "https://www.youtube.com/watch?v=Wjfh9wbG2t4"
+      },
+      "19452263": {
+        "youtube": "https://www.youtube.com/watch?v=EP5H8xduLqY"
+      },
+      "19441488": {
+        "youtube": "https://www.youtube.com/watch?v=iheFq1-p_TM"
       }
     }
+  },
+  "about": {
+    "photo": "/doctor-portrait.jpg",
+    "photoAlt": "郭哲宏 醫師",
+    "name": "郭哲宏 醫師",
+    "sub": "路克醫師 ｜ 耳鼻喉科・顏面外科",
+    "motto": [
+      "看得懂的耳鼻喉",
+      "聊得來的顏面外科",
+      "把複雜的醫療，說成你聽得懂的樣子"
+    ],
+    "sections": [
+      {
+        "title": "現任",
+        "items": [
+          "澄清醫院中港分院 耳鼻喉科 主治醫師",
+          "台中弘鑫耳鼻喉科診所 主治醫師",
+          "信望愛眼科診所 主治醫師"
+        ]
+      },
+      {
+        "title": "學歷",
+        "items": [
+          "高雄醫學院 醫學系 醫學士"
+        ]
+      },
+      {
+        "title": "經歷",
+        "items": [
+          "新光吳火獅紀念醫院 耳鼻喉科 總醫師",
+          "中國醫藥大學新竹附設醫院 耳鼻喉科 主治醫師"
+        ]
+      },
+      {
+        "title": "專業證照",
+        "items": [
+          "耳鼻喉科專科醫師證書",
+          "台灣顏面整形重建外科專科醫師",
+          "細胞治療技術醫師認證",
+          "台灣肥胖醫學會 會員醫師",
+          "台灣基層糖尿病協會 會員醫師",
+          "台灣基因營養功能醫學學會 會員醫師",
+          "施行細胞治療技術認證醫師"
+        ]
+      }
+    ],
+    "social": [
+      {
+        "kind": "facebook",
+        "label": "Facebook",
+        "name": "路克醫師 郭哲宏",
+        "url": "https://www.facebook.com/profile.php?id=61587848746181"
+      },
+      {
+        "kind": "apple",
+        "label": "Apple Podcasts",
+        "name": "健康噗克牌",
+        "url": "https://podcasts.apple.com/tw/podcast/id6787155817"
+      },
+      {
+        "kind": "spotify",
+        "label": "Spotify",
+        "name": "健康噗克牌",
+        "url": "https://open.spotify.com/show/033LHpaQGEcHEbAWYDlCMm"
+      },
+      {
+        "kind": "youtube",
+        "label": "YouTube",
+        "name": "Dr.路克 郭哲宏",
+        "url": "https://www.youtube.com/channel/UCdG0NZKNx4hOqixF792uKjQ"
+      }
+    ]
+  },
+  "clinic": {
+    "intro": "以下為郭哲宏醫師目前看診的院所。線上掛號請點按鈕，會開啟醫院的掛號系統。",
+    "sites": [
+      {
+        "name": "澄清醫院中港分院",
+        "dept": "耳鼻喉科",
+        "address": "台中市西屯區台灣大道四段 966 號",
+        "phone": "04-2463-2000",
+        "registerUrl": "https://ck.ccgh.com.tw/register_detail.htm?pkId=110&typeName=%E5%85%B6%E4%BB%96%E5%B0%88%E7%A7%91%E7%B3%BB&deptName=%E8%80%B3%E9%BC%BB%E5%96%89%E7%A7%91",
+        "registerLabel": "線上掛號"
+      },
+      {
+        "name": "台中弘鑫耳鼻喉科診所",
+        "dept": "耳鼻喉科"
+      },
+      {
+        "name": "信望愛眼科診所",
+        "dept": "顏面外科・眼周整形"
+      }
+    ]
   }
 }

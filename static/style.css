@@ -242,3 +242,43 @@ main.post-wrap > .crumbs { margin: 4px 0 18px; }
 /* Podcast 共同主持人連結：粗體＋醒目色＋底線 */
 .page-lead .cohost { color: #d4731f; font-weight: 800; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .page-lead .cohost:hover { color: #b85e12; }
+
+/* ---------- 關於 ---------- */
+.about-page { max-width: 52rem; }
+.profile { display: grid; grid-template-columns: 1fr; gap: 22px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; margin-bottom: 26px; }
+@media (min-width: 640px) { .profile { grid-template-columns: 220px 1fr; padding: 28px; } }
+.profile-photo { width: 100%; max-width: 260px; margin: 0 auto; border-radius: 14px; object-fit: cover; aspect-ratio: 4 / 5; }
+.profile-name { margin: 0; font-size: 1.6rem; font-weight: 800; color: var(--brand-dark); }
+.profile-sub { margin: 4px 0 14px; color: var(--muted); font-weight: 600; }
+.motto { margin: 0 0 18px; font-size: 1.08rem; line-height: 1.7; color: var(--text); }
+.motto-clause { display: block; }
+.motto-clause:first-child, .motto-clause:nth-child(2) { font-weight: 800; color: var(--brand); font-size: 1.2rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.about-block { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px; box-shadow: var(--shadow); }
+.about-h { font-size: 1.15rem; margin: 0 0 10px; color: var(--brand); padding-left: 12px; position: relative; }
+.about-h::before { content: ""; position: absolute; left: 0; top: .2em; bottom: .2em; width: 4px; border-radius: 2px; background: var(--brand-light); }
+.about-list { margin: 0; padding-left: 1.2em; }
+.about-list li { margin: 4px 0; }
+.social-links { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 560px) { .social-links { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.social-link { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); color: inherit; transition: transform .15s, border-color .15s; }
+.social-link:hover { text-decoration: none; transform: translateY(-1px); border-color: var(--brand-light); }
+.social-icon { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; flex: none; color: #fff; }
+.social-icon svg { width: 22px; height: 22px; fill: currentColor; }
+.social-facebook { background: #1877f2; }
+.social-apple { background: #872ec4; }
+.social-spotify { background: #1db954; }
+.social-youtube { background: #ff0000; }
+.social-text { display: flex; flex-direction: column; min-width: 0; }
+.social-label { font-size: .8rem; color: var(--muted); }
+.social-name { font-weight: 700; }
+
+/* ---------- 門診與掛號 ---------- */
+.clinics { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 720px) { .clinics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.clinic-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 6px; }
+.clinic-card .btn { align-self: flex-start; margin-top: 8px; }
+.clinic-name { font-size: 1.2rem; margin: 0; color: var(--brand-dark); }
+.clinic-dept { margin: 0 0 6px; color: var(--brand); font-weight: 700; font-size: .95rem; }
+.clinic-line { margin: 0; color: var(--text); }
+.clinic-line.muted { color: var(--muted); font-size: .9rem; }
