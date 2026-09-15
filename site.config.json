@@ -64,7 +64,7 @@
   },
   "podcast": {
     "title": "健康噗克牌",
-    "desc": "路克醫師和朋友們的健康 Podcast：把耳鼻喉、兒童健康、季節流行病與生活裡的醫學迷思，用聊天的方式說給你聽。",
+    "desc": "路克醫師和<a href=\"https://blog.drpopu.com/\" rel=\"noopener\">波噗醫師</a>共同主持的健康 Podcast，帶你用輕鬆好懂的方式，聊聊常見疾病的迷思、營養、運動、功能醫學，以及健康生活的大小事。以實證醫學為基礎，分享實用且容易實踐的健康知識，陪你一步步打造更健康又有活力的生活。",
     "rss": "https://feeds.buzzsprout.com/2627093.rss",
     "buzzsproutId": "2627093",
     "apple": {

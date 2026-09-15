@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eaf3f5"/>
+      <stop offset="1" stop-color="#d3e6ea"/>
+    </linearGradient>
+    <radialGradient id="iris" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#5fb7c9"/>
+      <stop offset="0.55" stop-color="#1f7d90"/>
+      <stop offset="1" stop-color="#0b4a56"/>
+    </radialGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbeee4"/>
+      <stop offset="1" stop-color="#f3d9c9"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6e2d4"/>
+      <stop offset="1" stop-color="#eccbb8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1330" cy="180" r="230" fill="#0b5563" opacity="0.06"/>
+  <circle cx="220" cy="760" r="170" fill="#0b5563" opacity="0.06"/>
+  <g fill="#0b5563" opacity="0.10">
+    <circle cx="120" cy="120" r="4"/><circle cx="160" cy="120" r="4"/><circle cx="200" cy="120" r="4"/>
+    <circle cx="120" cy="160" r="4"/><circle cx="160" cy="160" r="4"/><circle cx="200" cy="160" r="4"/>
+    <circle cx="120" cy="200" r="4"/><circle cx="160" cy="200" r="4"/><circle cx="200" cy="200" r="4"/>
+  </g>
+
+  <!-- 膚色底 -->
+  <ellipse cx="800" cy="520" rx="560" ry="300" fill="url(#skin)"/>
+
+  <!-- 眉毛 -->
+  <path d="M430 300 C 560 210, 900 200, 1150 280" fill="none" stroke="#6b4a3a" stroke-width="22" stroke-linecap="round" opacity="0.85"/>
+  <path d="M470 300 C 600 245, 880 235, 1110 285" fill="none" stroke="#8a6250" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- 上眼皮：摺痕與眼線之間的眼皮帶（雙眼皮） -->
+  <path d="M400 520 C 560 400, 1040 400, 1200 520 C 1060 300, 540 300, 400 520 Z" fill="url(#lid)"/>
+  <!-- 摺痕下方的柔和陰影 -->
+  <path d="M420 505 C 560 306, 1040 306, 1180 505 C 1040 340, 560 340, 420 505 Z" fill="#c98b70" opacity="0.22"/>
+  <!-- 雙眼皮摺痕線 -->
+  <path d="M440 500 C 580 296, 1020 296, 1160 500" fill="none" stroke="#a96d55" stroke-width="9" stroke-linecap="round" opacity="0.95"/>
+
+  <!-- 眼白 -->
+  <path d="M400 520 C 560 400, 1040 400, 1200 520 C 1040 640, 560 640, 400 520 Z" fill="#fdfdfd"/>
+  <!-- 眼白陰影 -->
+  <path d="M400 520 C 560 400, 1040 400, 1200 520 C 1040 470, 560 470, 400 520 Z" fill="#0b5563" opacity="0.08"/>
+
+  <!-- 虹膜與瞳孔（用眼型裁切） -->
+  <clipPath id="eyeClip">
+    <path d="M400 520 C 560 400, 1040 400, 1200 520 C 1040 640, 560 640, 400 520 Z"/>
+  </clipPath>
+  <g clip-path="url(#eyeClip)">
+    <circle cx="800" cy="525" r="128" fill="url(#iris)"/>
+    <circle cx="800" cy="525" r="128" fill="none" stroke="#083b45" stroke-width="6" opacity="0.8"/>
+    <g stroke="#0b4a56" stroke-width="3" opacity="0.35" fill="none">
+      <path d="M800 400 L800 650"/><path d="M675 525 L925 525"/>
+      <path d="M712 437 L888 613"/><path d="M888 437 L712 613"/>
+    </g>
+    <circle cx="800" cy="525" r="56" fill="#0d1b20"/>
+    <circle cx="768" cy="490" r="24" fill="#ffffff"/>
+    <circle cx="840" cy="560" r="10" fill="#ffffff" opacity="0.8"/>
+  </g>
+
+  <!-- 上眼線 -->
+  <path d="M400 520 C 560 400, 1040 400, 1200 520" fill="none" stroke="#3b2a24" stroke-width="16" stroke-linecap="round"/>
+  <!-- 下眼線 -->
+  <path d="M430 540 C 570 640, 1030 640, 1170 540" fill="none" stroke="#5a4038" stroke-width="6" stroke-linecap="round" opacity="0.75"/>
+
+  <!-- 上睫毛 -->
+  <g fill="none" stroke="#3b2a24" stroke-width="9" stroke-linecap="round">
+    <path d="M520 448 C 508 431, 502 419, 500 408"/>
+    <path d="M580 424 C 572 407, 568 395, 568 383"/>
+    <path d="M650 410 C 646 392, 646 379, 649 366"/>
+    <path d="M730 402 C 730 384, 732 371, 737 356"/>
+    <path d="M810 400 C 812 383, 817 369, 824 354"/>
+    <path d="M890 404 C 896 387, 903 373, 913 360"/>
+    <path d="M965 414 C 974 398, 984 385, 996 373"/>
+    <path d="M1035 432 C 1046 419, 1058 408, 1072 398"/>
+    <path d="M1100 458 C 1113 447, 1125 440, 1138 434"/>
+  </g>
+  <!-- 下睫毛 -->
+  <g fill="none" stroke="#5a4038" stroke-width="5" stroke-linecap="round" opacity="0.75">
+    <path d="M560 606 C 552 622, 546 634, 542 646"/>
+    <path d="M650 634 C 646 650, 644 662, 644 674"/>
+    <path d="M760 646 C 760 662, 762 674, 766 686"/>
+    <path d="M870 642 C 874 658, 878 670, 884 682"/>
+    <path d="M970 622 C 980 638, 988 650, 996 660"/>
+    <path d="M1060 592 C 1074 604, 1086 614, 1098 622"/>
+  </g>
+
+  <!-- 腮紅 -->
+  <ellipse cx="1180" cy="700" rx="110" ry="46" fill="#f3b8a6" opacity="0.3"/>
+  <ellipse cx="430" cy="700" rx="110" ry="46" fill="#f3b8a6" opacity="0.25"/>
+</svg>

@@ -319,7 +319,7 @@ function renderPodcast(episodes) {
     <div class="wrap">
       <nav class="crumbs"><a href="/">首頁</a> › Podcast</nav>
       <h1>🎙️ ${esc(pc.title)}</h1>
-      <p class="page-lead">${esc(pc.desc)}</p>
+      <p class="page-lead">${pc.desc}</p>
     </div>
   </section>
   <section class="section">
@@ -337,7 +337,7 @@ function renderPodcast(episodes) {
     </div>
   </section>
 </main>`;
-  return layout({ title: 'Podcast', description: `${pc.title}｜${pc.desc}`, canonical: `${site.url}/podcast/`, body, current: '/podcast/' });
+  return layout({ title: 'Podcast', description: `${pc.title}｜${pc.desc.replace(/<[^>]+>/g, '')}`, canonical: `${site.url}/podcast/`, body, current: '/podcast/' });
 }
 
 // ---------- 各頁 ----------
