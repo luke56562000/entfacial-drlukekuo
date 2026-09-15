@@ -238,3 +238,7 @@ main.post-wrap > .crumbs { margin: 4px 0 18px; }
 .share-fb { background: #1877f2; }
 .share-line { background: #06c755; }
 .share-copy { background: var(--brand); }
+
+/* Podcast 共同主持人連結：粗體＋醒目色＋底線 */
+.page-lead .cohost { color: #d4731f; font-weight: 800; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.page-lead .cohost:hover { color: #b85e12; }
