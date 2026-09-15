@@ -366,7 +366,6 @@ function renderPodcast(episodes) {
         <a class="btn btn-ghost" href="${esc(pc.youtube.showUrl)}" target="_blank" rel="noopener">${ICON.youtube} YouTube</a>
       </div>
       <p class="site-updated" style="margin:0 0 20px">點標題可到節目頁收聽；右側圖示直接開啟各平台的該集（淡色圖示表示該平台尚無單集連結，會開啟節目頁）。</p>
-      <div class="pod-player"><iframe src="https://www.buzzsprout.com/${esc(pc.buzzsproutId)}?client_source=large_player&iframe=true" loading="lazy" title="${esc(pc.title)} 播放器"></iframe></div>
       <h2 class="section-title">全部集數</h2>
       <ol class="episodes">${list || '<li>目前讀不到集數，請稍後再試。</li>'}
       </ol>
