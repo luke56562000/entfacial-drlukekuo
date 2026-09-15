@@ -4,9 +4,9 @@ date: 2026-09-15
 author: 郭哲宏 醫師
 category: 耳鼻喉
 summary: 孩子說「聽得到自己講話的聲音」、耳朵悶悶的，不一定是中耳積水。耳鼻喉科醫師解析常被誤判的兒童「耳咽管開放症」：症狀怎麼分辨、診間會做哪些檢查、和耳咽管阻塞差在哪、怎麼治療，以及 2026 年系統性回顧的重點發現。
-image: /assets/patulous-eustachian-tube-kids.jpg
-image_alt: 插畫：孩子側臉，說話的聲音經由關不緊的耳咽管傳回耳朵，對話框寫著「聽到自己講話的回音？」
-image_credit:
+image: /assets/child-ear-exam-profile.jpg
+image_alt: 男童側臉，醫師戴手套檢查他的耳朵
+image_credit: 照片：<a href="https://commons.wikimedia.org/wiki/File:Child_receives_hearing_exam_in_a_clinic_setting.jpg" rel="noopener">Child receives hearing exam in a clinic setting</a> — <a href="https://www.flickr.com/people/shixart1985/" rel="noopener">Shixart1985</a>，<a href="https://creativecommons.org/licenses/by/2.0/" rel="noopener">CC BY 2.0</a>，via Wikimedia Commons（已裁切）
 ---
 
 「媽媽，我耳朵怪怪的，可以聽到自己講話的聲音，很奇怪。」
