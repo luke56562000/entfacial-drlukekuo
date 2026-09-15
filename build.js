@@ -432,7 +432,7 @@ function renderClinic() {
         ${st.address ? `<p class="clinic-line">📍 ${esc(st.address)}</p>` : ''}
         ${st.phone ? `<p class="clinic-line">☎️ <a href="tel:${esc(st.phone.replace(/-/g, ''))}">${esc(st.phone)}</a></p>` : ''}
         ${st.note ? `<p class="clinic-line">${esc(st.note)}</p>` : ''}
-        ${st.registerUrl ? `<a class="btn btn-primary" href="${esc(st.registerUrl)}" target="_blank" rel="noopener">${esc(st.registerLabel || '線上掛號')} ↗</a>` : '<p class="clinic-line muted">門診時間與掛號方式請洽診所</p>'}
+        ${st.registerUrl ? `<a class="btn ${st.registerLabel && st.registerLabel !== '線上掛號' ? 'btn-ghost' : 'btn-primary'}" href="${esc(st.registerUrl)}" target="_blank" rel="noopener">${esc(st.registerLabel || '線上掛號')} ↗</a>` : '<p class="clinic-line muted">門診時間與掛號方式請洽診所</p>'}
       </article>`).join('');
   const body = `
 <main id="main">

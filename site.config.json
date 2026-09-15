@@ -205,7 +205,11 @@
       },
       {
         "name": "信望愛眼科診所",
-        "dept": "顏面外科・眼周整形"
+        "dept": "顏面外科・眼周整形",
+        "address": "403 臺中市西區美村路一段 138 號",
+        "phone": "04-2322-9819",
+        "registerUrl": "https://www.facebook.com/sinwouni",
+        "registerLabel": "診所 Facebook"
       }
     ]
   }
