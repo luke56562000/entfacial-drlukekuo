@@ -201,7 +201,10 @@
         "name": "台中弘鑫耳鼻喉科診所",
         "dept": "耳鼻喉科",
         "address": "台中市太平區樹孝路 202 號",
-        "phone": "04-2393-3595"
+        "phone": "04-2393-3595",
+        "registerUrl": "https://liff.line.me/1660779106-0YEeop7k/linebot/agreement?inviter=BbgOJx74H8lI9Ypzt7GRvQXUNByNaM4VE0pCJaf0PdZnliFHgk-rljomHW4ozNtrkK5mw7SN7X7S0blkRaAvWA%3D%3D",
+        "registerLabel": "LINE 網路預約",
+        "note": "用手機點按鈕會開啟 LINE 預約（電腦上請改用手機掃描診所 QR code）"
       },
       {
         "name": "信望愛眼科診所",
