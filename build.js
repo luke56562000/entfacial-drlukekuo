@@ -141,6 +141,26 @@ function loadPages() {
   });
 }
 
+
+// 讀 JPEG / PNG 的像素尺寸（給 og:image:width/height 用，Facebook 第一次分享才會直接顯示圖片）
+function imageSize(publicPath) {
+  try {
+    const file = publicPath.startsWith('/assets/') ? join(ROOT, 'assets', publicPath.slice(8)) : join(ROOT, 'static', publicPath.replace(/^\//, ''));
+    const b = readFileSync(file);
+    if (b[0] === 0x89 && b[1] === 0x50) return { w: b.readUInt32BE(16), h: b.readUInt32BE(20) }; // PNG
+    if (b[0] === 0xff && b[1] === 0xd8) { // JPEG：找 SOF 區段
+      let i = 2;
+      while (i < b.length) {
+        if (b[i] !== 0xff) { i++; continue; }
+        const marker = b[i + 1];
+        if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) return { h: b.readUInt16BE(i + 5), w: b.readUInt16BE(i + 7) };
+        i += 2 + b.readUInt16BE(i + 2);
+      }
+    }
+  } catch {}
+  return null;
+}
+
 // ---------- 版型片段 ----------
 function heroCreditInline() {
   const h = site.postImage;
@@ -195,6 +215,8 @@ function layout({ title, description, canonical, body, bodyAttrs = '', ogImage, 
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(canonical)}">
 <meta property="og:image" content="${esc(site.url + (ogImage || site.ogImage))}">
+${(() => { const sz = imageSize(ogImage || site.ogImage); return sz ? `<meta property="og:image:width" content="${sz.w}">\n<meta property="og:image:height" content="${sz.h}">` : ''; })()}
+<meta property="og:image:type" content="image/${(ogImage || site.ogImage).endsWith('.png') ? 'png' : 'jpeg'}">
 <meta property="og:site_name" content="${esc(site.title + ' ' + site.subtitle)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0b5563">
