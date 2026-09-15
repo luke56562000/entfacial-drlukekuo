@@ -28,3 +28,11 @@
     for (const el of els) el.textContent = '–';
   }
 })();
+
+// 文章底部「複製連結」
+for (const btn of document.querySelectorAll('[data-copy]')) {
+  btn.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(btn.dataset.copy); } catch { prompt('複製這個網址：', btn.dataset.copy); return; }
+    const t = btn.innerHTML; btn.innerHTML = '已複製 ✓'; setTimeout(() => { btn.innerHTML = t; }, 1800);
+  });
+}

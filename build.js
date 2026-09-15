@@ -312,6 +312,9 @@ async function loadPodcast() {
 }
 
 const ICON = {
+  facebook: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg>',
+  line: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 5.64 2 10.12c0 4.02 3.56 7.38 8.37 8.01.33.07.77.22.88.5.1.26.07.66.03.92l-.14.85c-.04.26-.2 1 .88.55 1.08-.46 5.83-3.43 7.95-5.88C21.55 13.5 22 11.9 22 10.12 22 5.64 17.52 2 12 2ZM8.3 12.9H6.36a.5.5 0 0 1-.5-.5V8.6a.5.5 0 0 1 1 0v3.3H8.3a.5.5 0 0 1 0 1Zm1.9-.5a.5.5 0 0 1-1 0V8.6a.5.5 0 0 1 1 0v3.8Zm4.6 0a.5.5 0 0 1-.9.3l-1.94-2.64v2.34a.5.5 0 0 1-1 0V8.6a.5.5 0 0 1 .9-.3l1.94 2.64V8.6a.5.5 0 0 1 1 0v3.8Zm3.1-2.4a.5.5 0 0 1 0 1h-1.44v.9h1.44a.5.5 0 0 1 0 1h-1.94a.5.5 0 0 1-.5-.5V8.6a.5.5 0 0 1 .5-.5h1.94a.5.5 0 0 1 0 1h-1.44v.9h1.44Z"/></svg>',
+  link: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 13.4a1 1 0 0 1 0-1.4l2.8-2.8a3 3 0 1 1 4.2 4.2l-1.4 1.4a1 1 0 1 1-1.4-1.4l1.4-1.4a1 1 0 1 0-1.4-1.4l-2.8 2.8a1 1 0 0 1-1.4 0Zm2.8-2.8a1 1 0 0 1 0 1.4l-2.8 2.8a3 3 0 1 1-4.2-4.2l1.4-1.4a1 1 0 1 1 1.4 1.4L7.8 12a1 1 0 1 0 1.4 1.4l2.8-2.8a1 1 0 0 1 1.4 0Z"/></svg>',
   apple: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.33c-.1-.75-.2-1.9-.05-2.72l.7-3.2c.14-.63.5-1.12 1.1-1.12h3.7c.6 0 .96.5 1.1 1.12l.7 3.2c.15.82.05 1.97-.05 2.72A10 10 0 0 0 12 2Zm0 4.5a3.75 3.75 0 0 1 2.3 6.7 5.9 5.9 0 0 0-4.6 0A3.75 3.75 0 0 1 12 6.5Zm0 1.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0-4a6.5 6.5 0 0 1 4.6 11.1l-1.07-1.07A5 5 0 1 0 8.47 14.03L7.4 15.1A6.5 6.5 0 0 1 12 4Z"/></svg>',
   spotify: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.24 14.5a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.1-10.55-1.15a.75.75 0 1 1-.33-1.46c4.56-1.04 8.48-.6 11.66 1.34.35.21.46.67.25 1.02Zm1.2-2.9a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 1 1-.54-1.8c4.36-1.32 9.79-.68 13.5 1.6.44.27.58.85.3 1.29Zm.1-3.02c-3.87-2.3-10.26-2.51-13.96-1.39a1.13 1.13 0 1 1-.65-2.16c4.24-1.29 11.3-1.04 15.76 1.61a1.13 1.13 0 0 1-1.15 1.94Z"/></svg>',
   youtube: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5ZM9.6 15.5v-7l6.2 3.5-6.2 3.5Z"/></svg>',
@@ -486,6 +489,12 @@ function renderPost(p) {
     <div class="post-body">
 ${p.html}
     </div>
+    <footer class="post-share" aria-label="分享這篇文章">
+      <span class="share-label">分享這篇文章</span>
+      <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(p.url)}" target="_blank" rel="noopener">${ICON.facebook} Facebook</a>
+      <a class="share-btn share-line" href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(p.url)}" target="_blank" rel="noopener">${ICON.line} LINE</a>
+      <button class="share-btn share-copy" type="button" data-copy="${esc(p.url)}">${ICON.link} 複製連結</button>
+    </footer>
   </article>
 </main>`;
 

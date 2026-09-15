@@ -228,3 +228,13 @@ main.post-wrap > .crumbs { margin: 4px 0 18px; }
 .plink[data-level="show"] { opacity: .55; }
 .plink[data-level="show"]:hover { opacity: 1; }
 @media (max-width: 560px) { .episode { grid-template-columns: 1fr; } }
+
+/* 文章分享按鈕 */
+.post-share { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.share-label { color: var(--muted); font-size: .9rem; margin-right: 4px; }
+.share-btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 16px; border-radius: 999px; font-weight: 700; font-size: .93rem; border: 0; cursor: pointer; font-family: inherit; color: #fff; transition: transform .15s, filter .15s; }
+.share-btn:hover { text-decoration: none; transform: translateY(-1px); filter: brightness(1.08); }
+.share-btn svg { width: 18px; height: 18px; fill: currentColor; }
+.share-fb { background: #1877f2; }
+.share-line { background: #06c755; }
+.share-copy { background: var(--brand); }
