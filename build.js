@@ -480,7 +480,7 @@ function renderIndex(posts) {
       <p class="hero-kicker">${esc(site.subtitle)}</p>
       <h1>${esc(site.title)}</h1>
       <p class="hero-tagline">${esc(site.tagline)}</p>
-      <p class="hero-intro">${esc(site.intro)}</p>
+      ${site.intro ? `<p class="hero-intro">${esc(site.intro)}</p>` : ''}
       <div class="hero-actions">
         <a class="btn btn-primary" href="/ent/">看衛教文章</a>
         <a class="btn btn-ghost" href="/clinic/">門診與掛號</a>
@@ -510,7 +510,7 @@ function renderIndex(posts) {
 
   return layout({
     title: '',
-    description: `${site.title} ${site.subtitle}｜${site.tagline}。${site.intro}`,
+    description: `${site.title} ${site.subtitle}｜${site.tagline}。${site.intro || ''}`.replace(/。$/, '。'),
     canonical: `${site.url}/`,
     body,
     current: '/',
