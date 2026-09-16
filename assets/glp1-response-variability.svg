@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eaf3f5"/><stop offset="1" stop-color="#d3e6ea"/></linearGradient>
+    <linearGradient id="pen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe8ec"/></linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#0b3a44" flood-opacity="0.15"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1350" cy="160" r="240" fill="#0b5563" opacity="0.06"/>
+  <circle cx="200" cy="780" r="180" fill="#0b5563" opacity="0.06"/>
+  <g fill="#0b5563" opacity="0.10">
+    <circle cx="120" cy="120" r="4"/><circle cx="160" cy="120" r="4"/><circle cx="200" cy="120" r="4"/>
+    <circle cx="120" cy="160" r="4"/><circle cx="160" cy="160" r="4"/><circle cx="200" cy="160" r="4"/>
+    <circle cx="120" cy="200" r="4"/><circle cx="160" cy="200" r="4"/><circle cx="200" cy="200" r="4"/>
+  </g>
+
+  <!-- 三支一模一樣的注射筆（直立） -->
+  <g id="pens" filter="url(#sh)">
+    <g transform="translate(430 120)">
+      <rect x="-32" y="0" width="64" height="420" rx="32" fill="url(#pen)" stroke="#c9d8dd" stroke-width="3"/>
+      <rect x="-32" y="0" width="64" height="110" rx="32" fill="#0b5563"/><rect x="-32" y="80" width="64" height="30" fill="#0b5563"/>
+      <rect x="-18" y="150" width="36" height="150" rx="8" fill="#fff" stroke="#c9d8dd" stroke-width="3"/>
+      <g stroke="#1d7d8f" stroke-width="4" stroke-linecap="round"><line x1="-8" y1="175" x2="8" y2="175"/><line x1="-4" y1="205" x2="4" y2="205"/><line x1="-8" y1="235" x2="8" y2="235"/><line x1="-4" y1="265" x2="4" y2="265"/></g>
+      <rect x="-24" y="330" width="48" height="70" rx="14" fill="#1d7d8f"/>
+      <rect x="-10" y="420" width="20" height="36" rx="6" fill="#9fb8bf"/><rect x="-3" y="456" width="6" height="34" rx="3" fill="#6b8791"/>
+    </g>
+    <use href="#p" />
+  </g>
+  <g transform="translate(370 0)" filter="url(#sh)">
+    <g transform="translate(430 120)">
+      <rect x="-32" y="0" width="64" height="420" rx="32" fill="url(#pen)" stroke="#c9d8dd" stroke-width="3"/>
+      <rect x="-32" y="0" width="64" height="110" rx="32" fill="#0b5563"/><rect x="-32" y="80" width="64" height="30" fill="#0b5563"/>
+      <rect x="-18" y="150" width="36" height="150" rx="8" fill="#fff" stroke="#c9d8dd" stroke-width="3"/>
+      <g stroke="#1d7d8f" stroke-width="4" stroke-linecap="round"><line x1="-8" y1="175" x2="8" y2="175"/><line x1="-4" y1="205" x2="4" y2="205"/><line x1="-8" y1="235" x2="8" y2="235"/><line x1="-4" y1="265" x2="4" y2="265"/></g>
+      <rect x="-24" y="330" width="48" height="70" rx="14" fill="#1d7d8f"/>
+      <rect x="-10" y="420" width="20" height="36" rx="6" fill="#9fb8bf"/><rect x="-3" y="456" width="6" height="34" rx="3" fill="#6b8791"/>
+    </g>
+  </g>
+  <g transform="translate(740 0)" filter="url(#sh)">
+    <g transform="translate(430 120)">
+      <rect x="-32" y="0" width="64" height="420" rx="32" fill="url(#pen)" stroke="#c9d8dd" stroke-width="3"/>
+      <rect x="-32" y="0" width="64" height="110" rx="32" fill="#0b5563"/><rect x="-32" y="80" width="64" height="30" fill="#0b5563"/>
+      <rect x="-18" y="150" width="36" height="150" rx="8" fill="#fff" stroke="#c9d8dd" stroke-width="3"/>
+      <g stroke="#1d7d8f" stroke-width="4" stroke-linecap="round"><line x1="-8" y1="175" x2="8" y2="175"/><line x1="-4" y1="205" x2="4" y2="205"/><line x1="-8" y1="235" x2="8" y2="235"/><line x1="-4" y1="265" x2="4" y2="265"/></g>
+      <rect x="-24" y="330" width="48" height="70" rx="14" fill="#1d7d8f"/>
+      <rect x="-10" y="420" width="20" height="36" rx="6" fill="#9fb8bf"/><rect x="-3" y="456" width="6" height="34" rx="3" fill="#6b8791"/>
+    </g>
+  </g>
+
+  <!-- 三個不同長度的向下箭頭＝不同的減重幅度 -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M430 640 L430 700" stroke="#e0902e" stroke-width="16"/><path d="M405 680 L430 708 L455 680" stroke="#e0902e" stroke-width="16"/>
+    <path d="M800 640 L800 750" stroke="#e0902e" stroke-width="16"/><path d="M775 730 L800 758 L825 730" stroke="#e0902e" stroke-width="16"/>
+    <path d="M1170 640 L1170 810" stroke="#0b5563" stroke-width="16"/><path d="M1145 790 L1170 818 L1195 790" stroke="#0b5563" stroke-width="16"/>
+  </g>
+  <g font-family="-apple-system,PingFang TC,Noto Sans TC,sans-serif" font-size="34" font-weight="700" text-anchor="middle">
+    <text x="430" y="770" fill="#b8701c">−2 kg</text>
+    <text x="800" y="820" fill="#b8701c">−5 kg</text>
+    <text x="1170" y="870" fill="#0b3a44">−10 kg</text>
+  </g>
+  <text x="800" y="70" font-family="-apple-system,PingFang TC,Noto Sans TC,sans-serif" font-size="40" font-weight="800" fill="#0b3a44" text-anchor="middle">同一種藥，為什麼結果不一樣？</text>
+</svg>
