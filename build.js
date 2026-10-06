@@ -137,7 +137,22 @@ function loadPages() {
   return readdirSync(PAGES_DIR).filter((f) => f.endsWith('.md')).map((file) => {
     const slug = basename(file, '.md');
     const { meta, body } = parseFrontmatter(readFileSync(join(PAGES_DIR, file), 'utf8'));
-    return { slug, title: meta.title || slug, description: meta.description || '', html: renderMarkdown(body), url: `${site.url}/${slug}/` };
+    // 從「常見問題」區塊抽出 Q&A，輸出 FAQPage 結構化資料（Google 與 AI 搜尋都讀這個）
+    const faq = [];
+    const faqSection = body.split(/^##\s+常見問題.*$/m)[1];
+    if (faqSection) {
+      for (const part of faqSection.split(/^###\s+/m).slice(1)) {
+        const nl = part.indexOf('\n');
+        const q = (nl === -1 ? part : part.slice(0, nl)).trim();
+        const a = (nl === -1 ? '' : part.slice(nl + 1)).split(/^##\s+/m)[0]
+          .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`>#]/g, '').replace(/\s+/g, ' ').trim();
+        if (q && a) faq.push({ q, a });
+      }
+    }
+    return {
+      slug, title: meta.title || slug, description: meta.description || '', lead: meta.lead || '',
+      image: meta.image || null, faq, html: renderMarkdown(body), url: `${site.url}/${slug}/`,
+    };
   });
 }
 
@@ -201,7 +216,7 @@ function navHtml(current = '') {
 }
 
 function layout({ title, description, canonical, body, bodyAttrs = '', ogImage, ogType = 'website', head = '', current = '' }) {
-  const fullTitle = title ? `${title}｜${site.title} ${site.subtitle}` : `${site.title}｜${site.subtitle}`;
+  const fullTitle = title ? `${title}｜${site.titleSuffix || site.title}` : `${site.title}｜${site.subtitle}`;
   return `<!doctype html>
 <html lang="${esc(site.lang)}">
 <head>
@@ -481,7 +496,7 @@ function renderIndex(posts) {
       <p class="hero-tagline">${esc(site.tagline)}</p>
       ${site.intro ? `<p class="hero-intro">${esc(site.intro)}</p>` : ''}
       <div class="hero-actions">
-        <a class="btn btn-primary" href="/ent/">看衛教文章</a>
+        <a class="btn btn-primary" href="/double-eyelid/">雙眼皮手術完整說明</a>
         <a class="btn btn-ghost" href="/clinic/">門診與掛號</a>
       </div>
     </div>
@@ -525,6 +540,7 @@ function renderCategory(c, posts) {
       <nav class="crumbs"><a href="/">首頁</a> › ${esc(c.name)}</nav>
       <h1>${c.icon} ${esc(c.name)}</h1>
       <p class="page-lead">${esc(c.desc)}</p>
+      ${c.pillar ? `<p class="page-cta"><a class="btn btn-primary" href="${esc(c.pillar.href)}">${esc(c.pillar.label)} →</a></p>` : ''}
     </div>
   </section>
   <section class="section">
@@ -544,17 +560,40 @@ function renderPage(pg) {
     <div class="wrap">
       <nav class="crumbs"><a href="/">首頁</a> › ${esc(pg.title)}</nav>
       <h1>${esc(pg.title)}</h1>
+      ${pg.lead ? `<p class="page-lead">${esc(pg.lead)}</p>` : ''}
     </div>
   </section>
   <section class="section">
     <div class="wrap post-wrap">
+      ${pg.image ? `<figure class="post-hero"><img src="${esc(pg.image)}" alt="${esc(pg.title)}"></figure>` : ''}
       <div class="post-body">
 ${pg.html}
       </div>
     </div>
   </section>
 </main>`;
-  return layout({ title: pg.title, description: pg.description, canonical: pg.url, body, current: `/${pg.slug}/` });
+
+  const graph = [{
+    '@type': 'MedicalWebPage',
+    name: pg.title,
+    description: pg.description,
+    url: pg.url,
+    inLanguage: site.lang,
+    author: { '@type': 'Person', name: site.author, jobTitle: site.subtitle },
+    publisher: { '@type': 'Organization', name: `${site.title} ${site.subtitle}`, url: site.url },
+  }];
+  if (pg.faq.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      mainEntity: pg.faq.map((f) => ({
+        '@type': 'Question', name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    });
+  }
+  const head = `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')}</script>\n`;
+
+  return layout({ title: pg.title, description: pg.description, canonical: pg.url, body, head, ogImage: pg.image, current: `/${pg.slug}/` });
 }
 
 function renderPost(p) {

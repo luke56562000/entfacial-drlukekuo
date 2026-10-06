@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eaf3f5"/><stop offset="1" stop-color="#d3e6ea"/></linearGradient>
+    <radialGradient id="iris" cx="0.5" cy="0.42" r="0.6">
+      <stop offset="0" stop-color="#5fb7c9"/><stop offset="0.55" stop-color="#1f7d90"/><stop offset="1" stop-color="#0b4a56"/>
+    </radialGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7e4d7"/><stop offset="1" stop-color="#eccbb8"/></linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1380" cy="140" r="210" fill="#0b5563" opacity="0.06"/>
+  <circle cx="190" cy="800" r="170" fill="#0b5563" opacity="0.06"/>
+  <g fill="#0b5563" opacity="0.10">
+    <circle cx="90" cy="110" r="4"/><circle cx="130" cy="110" r="4"/><circle cx="170" cy="110" r="4"/>
+    <circle cx="90" cy="150" r="4"/><circle cx="130" cy="150" r="4"/><circle cx="170" cy="150" r="4"/>
+    <circle cx="90" cy="190" r="4"/><circle cx="130" cy="190" r="4"/><circle cx="170" cy="190" r="4"/>
+  </g>
+
+  <text x="800" y="150" font-family="-apple-system,PingFang TC,Noto Sans TC,sans-serif" font-size="62" font-weight="800" fill="#0b3a44" text-anchor="middle">雙眼皮手術，怎麼選？</text>
+  <rect x="690" y="186" width="220" height="7" rx="4" fill="#1d7d8f"/>
+
+  <!-- 1 縫合式（埋線） -->
+  <g transform="translate(330 480)">
+    <ellipse cx="0" cy="20" rx="230" ry="150" fill="url(#lid)" opacity="0.55"/>
+    <path d="M-170 0 C -110 -80, 110 -80, 170 0 C 110 62, -110 62, -170 0 Z" fill="#fdfdfd"/>
+    <clipPath id="c1"><path d="M-170 0 C -110 -80, 110 -80, 170 0 C 110 62, -110 62, -170 0 Z"/></clipPath>
+    <g clip-path="url(#c1)">
+      <circle cx="0" cy="2" r="60" fill="url(#iris)"/>
+      <circle cx="0" cy="2" r="26" fill="#0d1b20"/>
+      <circle cx="-16" cy="-16" r="11" fill="#fff"/>
+    </g>
+    <path d="M-170 0 C -110 -80, 110 -80, 170 0" fill="none" stroke="#3b2a24" stroke-width="12" stroke-linecap="round"/>
+    <path d="M-150 -20 C -95 -92, 95 -92, 150 -20" fill="none" stroke="#a96d55" stroke-width="7" stroke-linecap="round" stroke-dasharray="26 20"/>
+    <g fill="#e0902e"><circle cx="-85" cy="-62" r="9"/><circle cx="0" cy="-76" r="9"/><circle cx="85" cy="-62" r="9"/></g>
+    <text x="0" y="200" font-family="-apple-system,PingFang TC,Noto Sans TC,sans-serif" font-size="40" font-weight="800" fill="#0b5563" text-anchor="middle">縫合式（埋線）</text>
+    <text x="0" y="248" font-family="-apple-system,PingFang TC,Noto Sans TC,sans-serif" font-size="30" fill="#3a5159" text-anchor="middle">不切開，縫線固定</text>
+  </g>
+
+  <!-- 2 切開式 -->
+  <g transform="translate(800 480)">
+    <ellipse cx="0" cy="20" rx="230" ry="150" fill="url(#lid)" opacity="0.55"/>
+    <path d="M-170 0 C -110 -80, 110 -80, 170 0 C 110 62, -110 62, -170 0 Z" fill="#fdfdfd"/>
+    <clipPath id="c2"><path d="M-170 0 C -110 -80, 110 -80, 170 0 C 110 62, -110 62, -170 0 Z"/></clipPath>
+    <g clip-path="url(#c2)">
+      <circle cx="0" cy="2" r="60" fill="url(#iris)"/>
+      <circle cx="0" cy="2" r="26" fill="#0d1b20"/>
+      <circle cx="-16" cy="-16" r="11" fill="#fff"/>
+    </g>
+    <path d="M-170 0 C -110 -80, 110 -80, 170 0" fill="none" stroke="#3b2a24" stroke-width="12" stroke-linecap="round"/>
+    <path d="M-150 -26 C -95 -102, 95 -102, 150 -26" fill="none" stroke="#a96d55" stroke-width="11" stroke-linecap="round"/>
+    <text x="0" y="200" font-family="-apple-system,PingFang TC,Noto Sans TC,sans-serif" font-size="40" font-weight="800" fill="#0b5563" text-anchor="middle">切開式</text>
+    <text x="0" y="248" font-family="-apple-system,PingFang TC,Noto Sans TC,sans-serif" font-size="30" fill="#3a5159" text-anchor="middle">可同時處理鬆皮與脂肪</text>
+  </g>
+
+  <!-- 3 眼皮下垂矯正 -->
+  <g transform="translate(1270 480)">
+    <ellipse cx="0" cy="20" rx="230" ry="150" fill="url(#lid)" opacity="0.55"/>
+    <path d="M-170 0 C -110 -80, 110 -80, 170 0 C 110 62, -110 62, -170 0 Z" fill="#fdfdfd"/>
+    <clipPath id="c3"><path d="M-170 0 C -110 -80, 110 -80, 170 0 C 110 62, -110 62, -170 0 Z"/></clipPath>
+    <g clip-path="url(#c3)">
+      <circle cx="0" cy="2" r="60" fill="url(#iris)"/>
+      <circle cx="0" cy="2" r="26" fill="#0d1b20"/>
+      <circle cx="-16" cy="-16" r="11" fill="#fff"/>
+      <!-- 下垂的上眼皮蓋住部分虹膜 -->
+      <path d="M-180 -95 L 180 -95 L 180 10 C 110 -30, -110 -30, -180 10 Z" fill="#eccbb8"/>
+      <path d="M-180 10 C -110 -30, 110 -30, 180 10" fill="none" stroke="#3b2a24" stroke-width="12"/>
+    </g>
+    <path d="M-170 0 C -110 -80, 110 -80, 170 0" fill="none" stroke="#3b2a24" stroke-width="6" stroke-linecap="round" opacity="0.35"/>
+    <g stroke="#e0902e" stroke-width="12" stroke-linecap="round" fill="none">
+      <path d="M0 -104 L 0 -158"/>
+    </g>
+    <path d="M0 -176 L 22 -138 L -22 -138 Z" fill="#e0902e"/>
+    <text x="0" y="200" font-family="-apple-system,PingFang TC,Noto Sans TC,sans-serif" font-size="40" font-weight="800" fill="#0b5563" text-anchor="middle">眼皮下垂矯正</text>
+    <text x="0" y="248" font-family="-apple-system,PingFang TC,Noto Sans TC,sans-serif" font-size="30" fill="#3a5159" text-anchor="middle">提眼瞼肌，視野與外觀</text>
+  </g>
+
+  <text x="800" y="828" font-family="-apple-system,PingFang TC,Noto Sans TC,sans-serif" font-size="32" fill="#59707a" text-anchor="middle">路克醫師 郭哲宏｜顏面整形重建外科・台中</text>
+</svg>

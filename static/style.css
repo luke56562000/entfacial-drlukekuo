@@ -282,3 +282,6 @@ main.post-wrap > .crumbs { margin: 4px 0 18px; }
 .clinic-dept { margin: 0 0 6px; color: var(--brand); font-weight: 700; font-size: .95rem; }
 .clinic-line { margin: 0; color: var(--text); }
 .clinic-line.muted { color: var(--muted); font-size: .9rem; }
+
+/* 分類頁的主題頁按鈕 */
+.page-cta { margin: 14px 0 0; }
