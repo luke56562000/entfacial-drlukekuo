@@ -157,6 +157,18 @@ function loadPages() {
 }
 
 
+// 圖片加上內容雜湊版本號：換圖後網址就會變，瀏覽器不會再吃到舊快取
+const assetFile = (publicPath) => publicPath.startsWith('/assets/')
+  ? join(ROOT, 'assets', publicPath.slice(8))
+  : join(ROOT, 'static', publicPath.replace(/^\//, ''));
+function vsrc(publicPath) {
+  if (!publicPath || /^https?:/.test(publicPath)) return publicPath;
+  try {
+    const h = createHash('md5').update(readFileSync(assetFile(publicPath))).digest('hex').slice(0, 8);
+    return `${publicPath}?v=${h}`;
+  } catch { return publicPath; }
+}
+
 // 讀 JPEG / PNG 的像素尺寸（給 og:image:width/height 用，Facebook 第一次分享才會直接顯示圖片）
 function imageSize(publicPath) {
   try {
@@ -200,7 +212,7 @@ function card(p) {
   return `
       <article class="card">
         <a class="card-media" href="/${esc(p.slug)}/" aria-hidden="true" tabindex="-1">
-          <img src="${esc(p.cardImage)}" alt="" loading="lazy">
+          <img src="${esc(vsrc(p.cardImage))}" alt="" loading="lazy">
         </a>
         <div class="card-body">
           <div class="chips">${chip(p.category)}</div>
@@ -229,7 +241,7 @@ function layout({ title, description, canonical, body, bodyAttrs = '', ogImage, 
 <meta property="og:title" content="${esc(fullTitle)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(canonical)}">
-<meta property="og:image" content="${esc(site.url + (ogImage || site.ogImage))}">
+<meta property="og:image" content="${esc(site.url + vsrc(ogImage || site.ogImage))}">
 ${(() => { const sz = imageSize(ogImage || site.ogImage); return sz ? `<meta property="og:image:width" content="${sz.w}">\n<meta property="og:image:height" content="${sz.h}">` : ''; })()}
 <meta property="og:image:type" content="image/${(ogImage || site.ogImage).endsWith('.png') ? 'png' : 'jpeg'}">
 <meta property="og:site_name" content="${esc(site.title + ' ' + site.subtitle)}">
@@ -414,7 +426,7 @@ function renderAbout() {
   <section class="section">
     <div class="wrap about-page">
       <div class="profile">
-        <img class="profile-photo" src="${esc(a.photo)}" alt="${esc(a.photoAlt)}" width="460" height="516">
+        <img class="profile-photo" src="${esc(vsrc(a.photo))}" alt="${esc(a.photoAlt)}" width="460" height="516">
         <div class="profile-text">
           <p class="profile-name">${esc(a.name)}</p>
           <p class="profile-sub">${esc(a.sub)}</p>
@@ -487,7 +499,7 @@ function renderIndex(posts) {
   const body = `
 <section class="hero">
   <div class="hero-media">
-    <img src="${esc(site.hero.src)}" alt="${esc(site.hero.alt)}" width="${site.hero.width}" height="${site.hero.height}" fetchpriority="high">
+    <img src="${esc(vsrc(site.hero.src))}" alt="${esc(site.hero.alt)}" width="${site.hero.width}" height="${site.hero.height}" fetchpriority="high">
   </div>
   <div class="wrap hero-inner">
     <div class="hero-text">
@@ -565,7 +577,7 @@ function renderPage(pg) {
   </section>
   <section class="section">
     <div class="wrap post-wrap">
-      ${pg.image ? `<figure class="post-hero"><img src="${esc(pg.image)}" alt="${esc(pg.title)}"></figure>` : ''}
+      ${pg.image ? `<figure class="post-hero"><img src="${esc(vsrc(pg.image))}" alt="${esc(pg.title)}"></figure>` : ''}
       <div class="post-body">
 ${pg.html}
       </div>
@@ -599,7 +611,7 @@ ${pg.html}
 function renderPost(p) {
   const figure = p.image ? `
     <figure class="post-hero">
-      <img src="${esc(p.image)}" alt="${esc(p.imageAlt)}">
+      <img src="${esc(vsrc(p.image))}" alt="${esc(p.imageAlt)}">
       ${p.imageCredit ? `<figcaption>${p.imageCredit}</figcaption>` : ''}
     </figure>` : '';
 
