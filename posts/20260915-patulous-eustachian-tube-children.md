@@ -87,8 +87,6 @@ image_credit: 照片：<a href="https://commons.wikimedia.org/wiki/File:Child_re
 
 ---
 
-延伸閱讀：〈[耳鼻喉顏面外科在看什麼？一次搞懂就診範圍](/20260912-what-is-ent-facial/)〉
-
 ## 參考文獻
 
 1. Sudhoff H. Systematic Review: Pediatric Patulous Eustachian Tube Dysfunction-An Underestimated Entity in Otolaryngology. *J Int Adv Otol*. 2026;22(3):1-6. doi: [10.65717/iao.2026.252127](https://doi.org/10.65717/iao.2026.252127). PMID: [42732626](https://pubmed.ncbi.nlm.nih.gov/42732626/)
