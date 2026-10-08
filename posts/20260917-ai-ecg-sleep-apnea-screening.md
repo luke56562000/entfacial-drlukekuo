@@ -6,7 +6,7 @@ category: 耳鼻喉
 summary: 統合分析13篇研究顯示，AI分析心電圖訊號偵測睡眠呼吸中止症的敏感度88%、特異度89%，並說明台灣目前的醫材許可現況。
 image: /assets/ai-ecg-sleep-apnea-screening.jpg
 og_image: /assets/ai-ecg-sleep-apnea-screening.jpg
-image_alt: 打呼加上白天很累，AI心電圖能幫忙篩檢睡眠呼吸中止症嗎？（文章封面）
+image_alt: 水彩插畫：心電圖紙帶上的波形在中央形成一顆心，左側月亮與 Zzz、右側太陽與咖啡杯，AI 節點標示異常片段
 ---
 
 打呼、白天很想睡、枕邊人說半夜好像有停止呼吸，這三個關鍵字常常一起出現在同一位病人身上。
