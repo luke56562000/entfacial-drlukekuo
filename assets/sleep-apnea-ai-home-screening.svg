@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <filter id="paper" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.085"/></feComponentTransfer>
+    </filter>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="3" seed="7" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="rough2">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="21" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="wash" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="3" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="26" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="7"/>
+    </filter>
+    <filter id="softwash" x="-40%" y="-40%" width="180%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="4" seed="11" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="34" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="16"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="#f4ecdf"/>
+
+  <!-- 夜色 -->
+  <g filter="url(#softwash)" opacity="0.34">
+    <path d="M120 60 C700 20 1300 60 1520 220 C1620 300 1600 560 1400 660 C1100 800 500 800 240 680 C60 596 20 240 120 60 Z" fill="#8094b4"/>
+  </g>
+  <g filter="url(#softwash)" opacity="0.2">
+    <path d="M620 80 C1000 50 1320 130 1420 280 C1500 400 1400 540 1180 586 C940 636 700 592 580 496 C470 408 460 190 620 80 Z" fill="#9f93b4"/>
+  </g>
+
+  <!-- 窗與月 -->
+  <g filter="url(#rough)">
+    <rect x="470" y="70" width="430" height="350" rx="16" fill="#e9eef3" stroke="#6f5a46" stroke-width="3.6"/>
+    <path d="M685 70 L 685 420 M470 245 L 900 245" stroke="#6f5a46" stroke-width="3.4"/>
+  </g>
+  <g filter="url(#wash)" opacity="0.4">
+    <path d="M500 100 C 640 84, 800 92, 866 118 C 880 200, 876 320, 858 388 C 720 404, 580 400, 500 382 C 488 300, 486 160, 500 100 Z" fill="#9fb3cd"/>
+  </g>
+  <g filter="url(#rough2)">
+    <circle cx="596" cy="166" r="52" fill="#f6edd6" stroke="#6f5a46" stroke-width="3"/>
+    <path d="M620 140 C 646 150, 648 184, 624 196 C 648 200, 666 176, 660 152 C 654 132, 634 128, 620 140 Z" fill="#dfd2b4" opacity="0.7"/>
+    <g fill="#f6edd6" opacity="0.9">
+      <circle cx="790" cy="140" r="5"/><circle cx="836" cy="196" r="4"/><circle cx="760" cy="316" r="4.5"/><circle cx="824" cy="340" r="3.6"/>
+    </g>
+  </g>
+  <!-- 窗簾 -->
+  <g filter="url(#rough)">
+    <path d="M860 60 C 920 120, 924 300, 892 440 C 950 430, 974 240, 952 60 Z" fill="#dfc7ab" stroke="#6f5a46" stroke-width="3.4" stroke-linejoin="round"/>
+    <path d="M444 60 C 400 130, 398 300, 424 440 C 372 426, 356 240, 374 60 Z" fill="#dfc7ab" stroke="#6f5a46" stroke-width="3.4" stroke-linejoin="round"/>
+  </g>
+
+  <!-- 床頭板 -->
+  <g filter="url(#rough)">
+    <path d="M1400 350 C 1500 344, 1560 350, 1590 358 L 1590 720 L 1400 720 Z" fill="#d3b793" stroke="#6f5a46" stroke-width="3.6" stroke-linejoin="round"/>
+  </g>
+
+  <!-- 枕頭 -->
+  <g filter="url(#rough)">
+    <path d="M1180 470 C 1250 424, 1346 418, 1400 444 C 1448 468, 1446 546, 1392 572 C 1308 606, 1190 600, 1152 560 C 1120 528, 1138 500, 1180 470 Z"
+          fill="#f5eee2" stroke="#6f5a46" stroke-width="3.4" stroke-linejoin="round"/>
+  </g>
+  <g filter="url(#wash)" opacity="0.26">
+    <path d="M1234 468 C 1304 442, 1374 446, 1408 470 C 1436 494, 1420 538, 1364 554 C 1294 574, 1222 562, 1204 532 C 1188 506, 1204 480, 1234 468 Z" fill="#cdc0a9"/>
+  </g>
+
+  <!-- 頭（面向左，微張口） -->
+  <g filter="url(#rough)">
+    <path d="M1238 438
+             C 1158 432, 1106 474, 1106 520
+             C 1106 550, 1124 570, 1150 580
+             C 1150 592, 1162 602, 1176 602
+             C 1188 602, 1198 594, 1200 586
+             C 1238 588, 1276 572, 1290 542
+             C 1304 508, 1290 444, 1238 438 Z"
+          fill="#f2dbc6" stroke="#6f5a46" stroke-width="3.4" stroke-linejoin="round"/>
+    <path d="M1238 438 C 1290 444, 1306 488, 1296 532 C 1298 476, 1268 450, 1232 452 C 1192 454, 1160 468, 1140 492 C 1152 454, 1188 434, 1238 438 Z" fill="#6b5341"/>
+    <g fill="none" stroke="#6f5a46" stroke-linecap="round">
+      <path d="M1148 498 C 1162 490, 1178 490, 1190 498" stroke-width="3.4"/>
+      <path d="M1114 516 C 1104 526, 1102 538, 1114 542" stroke-width="3.4"/>
+      <path d="M1232 528 C 1250 518, 1266 532, 1258 550 C 1253 560, 1242 564, 1234 558" stroke-width="3" opacity="0.85"/>
+    </g>
+    <path d="M1132 562 C 1146 550, 1168 554, 1178 570 C 1186 584, 1170 596, 1152 592 C 1136 588, 1126 572, 1132 562 Z" fill="#9a6354" stroke="#6f5a46" stroke-width="3"/>
+  </g>
+
+  <!-- 棉被 -->
+  <g filter="url(#rough)">
+    <path d="M640 760 C 800 660, 1020 612, 1210 606 C 1330 602, 1420 614, 1480 638 L 1480 790 L 640 790 Z"
+          fill="#dae3e8" stroke="#6f5a46" stroke-width="3.4" stroke-linejoin="round"/>
+    <path d="M640 760 C 800 660, 1020 612, 1210 606 C 1330 602, 1420 614, 1480 638 C 1400 648, 1280 634, 1160 640 C 1000 648, 820 692, 660 782 Z"
+          fill="#eef3f5" stroke="#6f5a46" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+  <g filter="url(#wash)" opacity="0.34">
+    <path d="M700 756 C 860 670, 1060 630, 1230 626 C 1340 624, 1420 636, 1464 654 C 1340 668, 1140 656, 980 684 C 860 704, 770 736, 700 756 Z" fill="#b6c8d2"/>
+  </g>
+  <g filter="url(#rough2)" fill="none" stroke="#8ea4ae" stroke-width="2.8" opacity="0.6">
+    <path d="M820 700 C 834 730, 838 764, 834 790"/>
+    <path d="M1000 660 C 1014 700, 1018 752, 1014 790"/>
+    <path d="M1180 642 C 1194 688, 1196 748, 1192 790"/>
+    <path d="M1350 644 C 1362 690, 1364 750, 1360 790"/>
+  </g>
+
+  <!-- 床框 -->
+  <g filter="url(#rough)">
+    <path d="M620 790 L 1600 790 L 1600 828 L 620 828 Z" fill="#e3d3ba" stroke="#6f5a46" stroke-width="3.4" stroke-linejoin="round"/>
+  </g>
+
+  <!-- 鼾聲（從口往左下傳） -->
+  <g filter="url(#rough2)" fill="none" stroke="#7d8ea6" stroke-linecap="round" opacity="0.6">
+    <path d="M1080 596 C 1040 580, 992 596, 950 584" stroke-width="4"/>
+    <path d="M1076 624 C 1030 612, 976 630, 930 616" stroke-width="4" opacity="0.8"/>
+    <path d="M1062 650 C 1010 642, 952 662, 904 646" stroke-width="3.6" opacity="0.6"/>
+  </g>
+  <g filter="url(#rough2)" fill="none" stroke="#7d8ea6" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <path d="M1180 380 L 1232 380 L 1180 432 L 1232 432" stroke-width="6"/>
+    <path d="M1116 294 L 1156 294 L 1116 334 L 1156 334" stroke-width="4.8" opacity="0.75"/>
+    <path d="M1066 226 L 1098 226 L 1066 258 L 1098 258" stroke-width="3.8" opacity="0.55"/>
+  </g>
+
+  <!-- 前景：床頭櫃檯面 -->
+  <g filter="url(#rough)">
+    <path d="M-20 764 L 560 764 L 560 900 L -20 900 Z" fill="#d9bb94" stroke="#6f5a46" stroke-width="3.6" stroke-linejoin="round"/>
+    <path d="M-20 742 L 580 742 L 580 770 L -20 770 Z" fill="#e8d4b4" stroke="#6f5a46" stroke-width="3.6" stroke-linejoin="round"/>
+  </g>
+  <g filter="url(#wash)" opacity="0.2">
+    <path d="M20 790 C 180 778, 400 782, 530 796 C 536 836, 532 872, 520 890 C 340 896, 140 894, 20 884 C 12 850, 12 812, 20 790 Z" fill="#a98354"/>
+  </g>
+
+  <!-- 手機（AI 偵測） -->
+  <g filter="url(#rough)" transform="translate(300 400)">
+    <rect x="0" y="0" width="200" height="340" rx="26" fill="#eef1f3" stroke="#6f5a46" stroke-width="4"/>
+    <rect x="18" y="26" width="164" height="282" rx="14" fill="#2f3f52" stroke="#6f5a46" stroke-width="3"/>
+    <g fill="none" stroke="#9fd2d8" stroke-width="5" stroke-linecap="round">
+      <path d="M36 170 L 36 170"/>
+      <path d="M48 150 L 48 190"/>
+      <path d="M68 124 L 68 216"/>
+      <path d="M88 156 L 88 184"/>
+      <path d="M108 110 L 108 230"/>
+      <path d="M128 148 L 128 192"/>
+      <path d="M148 134 L 148 206"/>
+      <path d="M166 162 L 166 178"/>
+    </g>
+    <circle cx="100" cy="326" r="8" fill="none" stroke="#6f5a46" stroke-width="3"/>
+    <!-- 接收訊號 -->
+    <g fill="none" stroke="#7fa6ad" stroke-width="4" stroke-linecap="round" opacity="0.85">
+      <path d="M212 120 C 240 140, 240 200, 212 220"/>
+      <path d="M238 96 C 280 130, 280 210, 238 244"/>
+      <path d="M264 72 C 320 118, 320 222, 264 268"/>
+    </g>
+  </g>
+
+  <!-- 前景鬧鐘 -->
+  <g filter="url(#rough2)" transform="translate(70 536)">
+    <circle cx="86" cy="86" r="84" fill="#ecdcc0" stroke="#6f5a46" stroke-width="4"/>
+    <circle cx="86" cy="86" r="64" fill="#faf3e6" stroke="#6f5a46" stroke-width="3"/>
+    <circle cx="26" cy="18" r="28" fill="#c69d74" stroke="#6f5a46" stroke-width="4"/>
+    <circle cx="146" cy="18" r="28" fill="#c69d74" stroke="#6f5a46" stroke-width="4"/>
+    <path d="M86 86 L 86 44" stroke="#5e4c3c" stroke-width="5" stroke-linecap="round"/>
+    <path d="M86 86 L 120 104" stroke="#5e4c3c" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="86" cy="86" r="5.6" fill="#5e4c3c"/>
+    <g fill="#9a8468"><circle cx="86" cy="36" r="3.4"/><circle cx="136" cy="86" r="3.4"/><circle cx="86" cy="136" r="3.4"/><circle cx="36" cy="86" r="3.4"/></g>
+  </g>
+
+  <rect width="1600" height="900" filter="url(#paper)"/>
+</svg>

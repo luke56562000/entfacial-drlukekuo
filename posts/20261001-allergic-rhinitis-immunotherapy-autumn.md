@@ -6,7 +6,7 @@ category: 耳鼻喉
 summary: 秋冬換季門診鼻過敏病人明顯變多，整理最新的屋塵蟎減敏治療研究，帶你了解不同做法的差異與台灣現況。
 image: /assets/allergic-rhinitis-immunotherapy-autumn.jpg
 og_image: /assets/allergic-rhinitis-immunotherapy-autumn.jpg
-image_alt: 換季鼻子又塞住？減敏治療到底有沒有用（文章封面）
+image_alt: 水彩插畫：側臉人物因鼻塞而皺眉、鼻頭泛紅、張口呼吸，周圍飄散花粉與秋天落葉
 ---
 
 門診最近幾乎每天都有人問：『醫師，我這鼻子是不是又要開始塞住了？』

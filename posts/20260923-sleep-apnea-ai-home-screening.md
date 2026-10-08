@@ -6,7 +6,7 @@ category: 耳鼻喉
 summary: AI 手錶、手機 App 說你可能有睡眠呼吸中止症，可信嗎？2026 年一篇涵蓋 60 篇研究的統合分析，整理 AI 篩檢工具的準確度，以及什麼時候還是要做正式睡眠檢查。
 image: /assets/sleep-apnea-ai-home-screening.jpg
 og_image: /assets/sleep-apnea-ai-home-screening.jpg
-image_alt: 打鼾很大聲，AI 居家睡眠篩檢準不準？（文章封面）
+image_alt: 水彩插畫：夜晚臥室中側躺打呼的人，床頭手機以聲波波形記錄鼾聲
 ---
 
 先說結論：AI 居家篩檢拿來「看看要不要進一步檢查」很好用，但不能拿來確診，也不能只看它的數字就決定治療。

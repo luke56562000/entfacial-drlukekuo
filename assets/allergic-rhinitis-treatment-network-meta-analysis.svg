@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <filter id="paper" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.085"/></feComponentTransfer>
+    </filter>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="3" seed="7" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="rough2">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="21" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="wash" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="3" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="26" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="7"/>
+    </filter>
+    <filter id="softwash" x="-40%" y="-40%" width="180%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="4" seed="11" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="34" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="16"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="#f8f0e1"/>
+
+  <g filter="url(#softwash)" opacity="0.34">
+    <path d="M620 150 C900 120 1080 290 1050 500 C1020 700 820 790 640 760 C470 732 380 560 430 400 C480 250 500 164 620 150 Z" fill="#b9cdc2"/>
+  </g>
+  <g filter="url(#softwash)" opacity="0.3">
+    <path d="M1130 250 C1300 210 1430 300 1410 440 C1392 566 1240 620 1120 580 C1010 544 1000 290 1130 250 Z" fill="#e3c3b6"/>
+  </g>
+  <g filter="url(#softwash)" opacity="0.26">
+    <path d="M250 520 C420 480 560 550 540 660 C522 760 350 800 240 764 C140 732 120 560 250 520 Z" fill="#d9bb86"/>
+  </g>
+
+  <!-- 鼻噴劑 -->
+  <g filter="url(#rough)" transform="translate(300 300) rotate(-6)">
+    <rect x="0" y="150" width="190" height="300" rx="34" fill="#cfe0e4" stroke="#55443a" stroke-width="6"/>
+    <rect x="22" y="196" width="146" height="120" rx="14" fill="#f6efe3" stroke="#55443a" stroke-width="5"/>
+    <g stroke="#7e9aa3" stroke-width="5" opacity="0.75" stroke-linecap="round">
+      <path d="M46 232 L 144 232"/><path d="M46 262 L 120 262"/>
+    </g>
+    <rect x="52" y="60" width="86" height="100" rx="18" fill="#9bbcc4" stroke="#55443a" stroke-width="6"/>
+    <path d="M70 60 C 74 24, 116 24, 120 60 Z" fill="#9bbcc4" stroke="#55443a" stroke-width="6" stroke-linejoin="round"/>
+    <rect x="30" y="140" width="130" height="26" rx="12" fill="#b4cdd3" stroke="#55443a" stroke-width="5"/>
+    <g fill="#8aa7b0" opacity="0.8">
+      <circle cx="60" cy="-8" r="7"/><circle cx="34" cy="-30" r="5.5"/><circle cx="14" cy="-54" r="4.5"/>
+      <circle cx="96" cy="-18" r="7"/><circle cx="96" cy="-48" r="5.5"/><circle cx="94" cy="-76" r="4.5"/>
+      <circle cx="132" cy="-8" r="7"/><circle cx="158" cy="-30" r="5.5"/><circle cx="180" cy="-54" r="4.5"/>
+      <circle cx="78" cy="-34" r="4"/><circle cx="118" cy="-34" r="4"/>
+    </g>
+  </g>
+
+  <!-- 膠囊 1 -->
+  <g filter="url(#rough)" transform="translate(690 230) rotate(-24)">
+    <rect x="0" y="0" width="300" height="118" rx="59" fill="#f1e3d2" stroke="#55443a" stroke-width="6"/>
+    <path d="M59 0 H 150 V 118 H 59 A 59 59 0 0 1 59 0 Z" fill="#d98a78" stroke="#55443a" stroke-width="6"/>
+    <path d="M150 0 L 150 118" stroke="#55443a" stroke-width="5"/>
+    <ellipse cx="96" cy="34" rx="30" ry="13" fill="#fff" opacity="0.4"/>
+  </g>
+
+  <!-- 膠囊 2 -->
+  <g filter="url(#rough)" transform="translate(900 540) rotate(16)">
+    <rect x="0" y="0" width="260" height="104" rx="52" fill="#f3ead6" stroke="#55443a" stroke-width="6"/>
+    <path d="M52 0 H 130 V 104 H 52 A 52 52 0 0 1 52 0 Z" fill="#8fa98a" stroke="#55443a" stroke-width="6"/>
+    <path d="M130 0 L 130 104" stroke="#55443a" stroke-width="5"/>
+    <ellipse cx="84" cy="30" rx="26" ry="11" fill="#fff" opacity="0.4"/>
+  </g>
+
+  <!-- 藥錠 -->
+  <g filter="url(#rough2)">
+    <g transform="translate(640 600)">
+      <circle cx="0" cy="0" r="96" fill="#f4ecdc" stroke="#55443a" stroke-width="6"/>
+      <path d="M0 -84 L 0 84" stroke="#55443a" stroke-width="5"/>
+      <ellipse cx="-30" cy="-36" rx="28" ry="14" fill="#fff" opacity="0.5"/>
+    </g>
+    <g transform="translate(830 700)">
+      <circle cx="0" cy="0" r="72" fill="#efd9c6" stroke="#55443a" stroke-width="6"/>
+      <path d="M-62 0 L 62 0" stroke="#55443a" stroke-width="5"/>
+      <ellipse cx="-22" cy="-28" rx="20" ry="10" fill="#fff" opacity="0.5"/>
+    </g>
+    <g transform="translate(1210 430)">
+      <circle cx="0" cy="0" r="62" fill="#dfe8ea" stroke="#55443a" stroke-width="6"/>
+      <path d="M-52 0 L 52 0" stroke="#55443a" stroke-width="5"/>
+      <ellipse cx="-18" cy="-24" rx="18" ry="9" fill="#fff" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- 鋁箔片 -->
+  <g filter="url(#rough)" transform="translate(1120 620) rotate(-8)">
+    <rect x="0" y="0" width="330" height="190" rx="22" fill="#eee6d6" stroke="#55443a" stroke-width="6"/>
+    <g fill="#d9c8ae" stroke="#55443a" stroke-width="4.5">
+      <circle cx="78" cy="62" r="34"/><circle cx="166" cy="62" r="34"/><circle cx="254" cy="62" r="34"/>
+      <circle cx="78" cy="132" r="34"/><circle cx="166" cy="132" r="34"/><circle cx="254" cy="132" r="34"/>
+    </g>
+  </g>
+
+  <!-- 滴劑瓶 -->
+  <g filter="url(#rough)" transform="translate(430 640) rotate(8)">
+    <rect x="0" y="60" width="120" height="170" rx="22" fill="#e6d2c2" stroke="#55443a" stroke-width="6"/>
+    <rect x="34" y="14" width="52" height="56" rx="12" fill="#b58f73" stroke="#55443a" stroke-width="6"/>
+    <rect x="16" y="104" width="88" height="62" rx="10" fill="#f6efe3" stroke="#55443a" stroke-width="5"/>
+  </g>
+
+  <rect width="1600" height="900" filter="url(#paper)"/>
+</svg>

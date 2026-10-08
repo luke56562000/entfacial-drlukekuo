@@ -6,7 +6,7 @@ category: 耳鼻喉
 summary: 整理一篇涵蓋175個臨床試驗、超過9萬人的過敏性鼻炎治療比較研究，告訴你為什麼『哪個藥最有效』沒有標準答案，以及診間實際會怎麼選。
 image: /assets/allergic-rhinitis-treatment-network-meta-analysis.jpg
 og_image: /assets/allergic-rhinitis-treatment-network-meta-analysis.jpg
-image_alt: 過敏性鼻炎的藥怎麼選？9萬人的大型研究告訴你真相（文章封面）
+image_alt: 水彩插畫：鼻噴劑、膠囊、藥錠、鋁箔片與滴劑瓶等過敏性鼻炎常見藥物
 ---
 
 最近換季，門診過敏性鼻炎的患者明顯變多，很多人劈頭就問：『噴的比吃的有效嗎？』『這個牌子比較貴，是不是比較好？』

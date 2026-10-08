@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <filter id="paper" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.085"/></feComponentTransfer>
+    </filter>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="3" seed="7" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="rough2">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="21" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="wash" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="3" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="26" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="7"/>
+    </filter>
+    <filter id="softwash" x="-40%" y="-40%" width="180%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="4" seed="11" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="34" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="16"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="#f8f0e1"/>
+
+  <g filter="url(#softwash)" opacity="0.38">
+    <path d="M880 170 C1150 150 1290 330 1260 540 C1232 740 1030 840 850 800 C676 762 620 580 666 430 C708 292 760 182 880 170 Z" fill="#e6c7b9"/>
+  </g>
+  <g filter="url(#softwash)" opacity="0.26">
+    <path d="M280 240 C440 190 570 280 548 406 C528 522 380 572 272 530 C172 490 150 292 280 240 Z" fill="#a9c2b4"/>
+  </g>
+  <g filter="url(#softwash)" opacity="0.2">
+    <path d="M300 648 C480 604 680 666 658 764 C640 856 440 882 318 846 C212 814 170 684 300 648 Z" fill="#d9bb86"/>
+  </g>
+
+  <!-- 臉（側面，面向左） -->
+  <g filter="url(#rough)">
+    <path d="M900 200
+             C 800 204, 744 272, 744 368
+             C 744 384, 738 392, 728 400
+             C 718 408, 710 420, 702 436
+             C 688 468, 668 500, 660 522
+             C 652 538, 662 554, 680 554
+             C 694 554, 702 562, 706 574
+             C 710 584, 702 590, 708 598
+             C 718 608, 734 606, 740 616
+             C 746 626, 732 634, 738 648
+             C 746 664, 770 672, 790 676
+             C 836 686, 898 678, 936 650
+             C 992 608, 1016 512, 1010 412
+             C 1004 286, 976 202, 900 200 Z"
+          fill="#f6e2d2" stroke="#6b5444" stroke-width="5" stroke-linejoin="round"/>
+  </g>
+
+  <!-- 鼻頭泛紅 -->
+  <g filter="url(#wash)" opacity="0.52">
+    <path d="M688 488 C 714 498, 718 540, 700 564 C 682 586, 652 580, 650 552 C 648 526, 668 482, 688 488 Z" fill="#cf6f5e"/>
+  </g>
+  <!-- 鼻樑淡暈 -->
+  <g filter="url(#wash)" opacity="0.2">
+    <path d="M716 416 C 740 424, 740 468, 720 494 C 702 516, 680 508, 682 484 C 684 458, 700 410, 716 416 Z" fill="#d98a78"/>
+  </g>
+
+  <!-- 五官（極簡） -->
+  <g filter="url(#rough2)" fill="none" stroke="#6b5444" stroke-linecap="round">
+    <path d="M772 358 C 806 336, 852 338, 880 354" stroke-width="9" stroke="#5d4a3c"/>
+    <path d="M774 404 C 798 390, 838 390, 856 406" stroke-width="5"/>
+    <path d="M778 408 C 800 420, 834 420, 852 410" stroke-width="3.6" opacity="0.7"/>
+    <circle cx="812" cy="410" r="7" fill="#5d4a3c" stroke="none"/>
+    <path d="M682 558 C 694 552, 706 558, 710 570" stroke-width="4.6"/>
+    <path d="M724 626 C 750 616, 778 618, 794 628" stroke-width="5"/>
+    <path d="M924 418 C 962 396, 996 424, 988 470 C 982 506, 954 520, 930 510" stroke-width="5"/>
+    <path d="M944 440 C 966 430, 978 446, 970 468" stroke-width="3.6" opacity="0.8"/>
+  </g>
+
+  <!-- 頭髮 -->
+  <g filter="url(#rough)">
+    <path d="M744 368
+             C 754 316, 792 272, 858 262
+             C 932 250, 988 300, 1002 400
+             C 1010 462, 1006 506, 996 548
+             C 1016 504, 1018 458, 1010 412
+             C 1004 286, 976 202, 900 200
+             C 800 204, 744 272, 744 368 Z"
+          fill="#5d4a3c" stroke="none"/>
+    <path d="M988 530 C 1000 566, 998 594, 984 614 C 976 582, 976 554, 982 532 Z" fill="#5d4a3c"/>
+  </g>
+
+  <!-- 吸不進去的氣流 -->
+  <g filter="url(#rough2)" opacity="0.78" fill="none" stroke="#b06a5c" stroke-linecap="round">
+    <path d="M556 520 C 592 500, 612 538, 648 524" stroke-width="6"/>
+    <path d="M538 570 C 578 548, 600 588, 640 572" stroke-width="6" opacity="0.7"/>
+    <path d="M578 474 C 610 458, 626 490, 658 480" stroke-width="5" opacity="0.5"/>
+  </g>
+  <!-- 花粉 -->
+  <g>
+    <circle cx="330" cy="304" r="13" fill="#d3a85f" opacity="0.8"/>
+    <circle cx="402" cy="256" r="9" fill="#c4705f" opacity="0.7"/>
+    <circle cx="268" cy="396" r="10" fill="#8fa98a" opacity="0.75"/>
+    <circle cx="438" cy="366" r="15" fill="#d3a85f" opacity="0.5"/>
+    <circle cx="362" cy="446" r="8" fill="#9fb6c9" opacity="0.8"/>
+    <circle cx="502" cy="304" r="11" fill="#c4705f" opacity="0.5"/>
+    <circle cx="240" cy="272" r="8" fill="#8fa98a" opacity="0.6"/>
+    <circle cx="474" cy="434" r="9" fill="#d3a85f" opacity="0.6"/>
+    <circle cx="300" cy="502" r="12" fill="#c4705f" opacity="0.42"/>
+    <circle cx="534" cy="390" r="7" fill="#8fa98a" opacity="0.7"/>
+    <circle cx="206" cy="340" r="9" fill="#d3a85f" opacity="0.5"/>
+    <circle cx="150" cy="248" r="11" fill="#c4705f" opacity="0.55"/>
+    <circle cx="196" cy="452" r="8" fill="#9fb6c9" opacity="0.6"/>
+    <circle cx="112" cy="406" r="10" fill="#d3a85f" opacity="0.45"/>
+    <circle cx="396" cy="538" r="9" fill="#8fa98a" opacity="0.55"/>
+    <circle cx="560" cy="246" r="8" fill="#d3a85f" opacity="0.5"/>
+    <circle cx="610" cy="336" r="10" fill="#c4705f" opacity="0.38"/>
+    <circle cx="256" cy="580" r="11" fill="#d3a85f" opacity="0.4"/>
+    <circle cx="470" cy="206" r="7" fill="#8fa98a" opacity="0.55"/>
+    <circle cx="140" cy="540" r="8" fill="#c4705f" opacity="0.4"/>
+    <circle cx="612" cy="430" r="8" fill="#9fb6c9" opacity="0.45"/>
+    <circle cx="330" cy="200" r="9" fill="#d3a85f" opacity="0.45"/>
+    <circle cx="556" cy="492" r="10" fill="#8fa98a" opacity="0.4"/>
+    <circle cx="96" cy="310" r="7" fill="#c4705f" opacity="0.45"/>
+  </g>
+
+  <!-- 落葉 -->
+  <g filter="url(#rough2)">
+    <g transform="translate(246 700) rotate(-20)">
+      <path d="M0 0 C 40 -34, 96 -30, 118 0 C 96 32, 40 36, 0 0 Z" fill="#c98a4e" opacity="0.78" stroke="#8a5c33" stroke-width="3.4"/>
+      <path d="M0 0 L 118 0" stroke="#8a5c33" stroke-width="2.6"/>
+      <g stroke="#8a5c33" stroke-width="2" opacity="0.8"><path d="M30 -17 L 42 0"/><path d="M58 -20 L 70 0"/><path d="M86 -14 L 94 0"/></g>
+    </g>
+    <g transform="translate(452 786) rotate(14)">
+      <path d="M0 0 C 30 -26, 74 -22, 90 0 C 74 24, 30 28, 0 0 Z" fill="#b5703f" opacity="0.62" stroke="#8a5c33" stroke-width="3.4"/>
+      <path d="M0 0 L 90 0" stroke="#8a5c33" stroke-width="2.6"/>
+      <g stroke="#8a5c33" stroke-width="1.8" opacity="0.75"><path d="M24 -13 L 34 0"/><path d="M46 -16 L 56 0"/><path d="M68 -11 L 74 0"/></g>
+    </g>
+    <g transform="translate(120 620) rotate(32) scale(0.72)">
+      <path d="M0 0 C 40 -34, 96 -30, 118 0 C 96 32, 40 36, 0 0 Z" fill="#cf9a5c" opacity="0.6" stroke="#8a5c33" stroke-width="4"/>
+      <path d="M0 0 L 118 0" stroke="#8a5c33" stroke-width="3"/>
+    </g>
+    <g transform="translate(560 650) rotate(-40) scale(0.62)">
+      <path d="M0 0 C 40 -34, 96 -30, 118 0 C 96 32, 40 36, 0 0 Z" fill="#b5703f" opacity="0.5" stroke="#8a5c33" stroke-width="4.4"/>
+      <path d="M0 0 L 118 0" stroke="#8a5c33" stroke-width="3.2"/>
+    </g>
+    <g transform="translate(300 160) rotate(18) scale(0.56)">
+      <path d="M0 0 C 40 -34, 96 -30, 118 0 C 96 32, 40 36, 0 0 Z" fill="#c98a4e" opacity="0.5" stroke="#8a5c33" stroke-width="5"/>
+      <path d="M0 0 L 118 0" stroke="#8a5c33" stroke-width="3.6"/>
+    </g>
+    <g transform="translate(600 150) rotate(-14) scale(0.5)">
+      <path d="M0 0 C 40 -34, 96 -30, 118 0 C 96 32, 40 36, 0 0 Z" fill="#b5703f" opacity="0.42" stroke="#8a5c33" stroke-width="5.4"/>
+      <path d="M0 0 L 118 0" stroke="#8a5c33" stroke-width="4"/>
+    </g>
+    <g transform="translate(70 760) rotate(-8) scale(0.8)">
+      <path d="M0 0 C 40 -34, 96 -30, 118 0 C 96 32, 40 36, 0 0 Z" fill="#cf9a5c" opacity="0.52" stroke="#8a5c33" stroke-width="3.8"/>
+      <path d="M0 0 L 118 0" stroke="#8a5c33" stroke-width="2.8"/>
+    </g>
+  </g>
+
+  <rect width="1600" height="900" filter="url(#paper)"/>
+</svg>
